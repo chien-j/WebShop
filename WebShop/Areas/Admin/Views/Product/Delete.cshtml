@@ -1,0 +1,72 @@
+﻿@model Product
+
+<form method="post">
+    @*<input asp-for="Id" />*@
+    <div class="border p-3 mt-4">
+
+        <div class="row pb-2">
+            <h2 class="text-primary"> Delete Product</h2>
+            <hr />
+
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3 row p-3">
+            <label asp-for="Title" class="p-2"></label>
+            <input asp-for="Title" type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Description" class="p-2"></label>
+            <input asp-for="Description" type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="ISBN" class="p-2"></label>
+            <input asp-for="ISBN" type="text" class="form-control" />
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label asp-for="Author" class="p-2"></label>
+            <input asp-for="Author" type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="ListPrice" class="p-2"></label>
+            <input asp-for="ListPrice" type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Price" class="p-2"></label>
+            <input asp-for="Price" type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Price50" class="p-2"></label>
+            <input asp-for="Price50" type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Price100" class="p-2"></label>
+            <input asp-for="Price100" type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1 form-floating">
+            <label asp-for="ImggeUrl" class="p-2"></label>
+            <input type="file" name="file" asp-for="ImggeUrl" class="form-control" />
+
+        </div>
+        <div class="mb-3 row p-1">
+            <img src="@Model.ImggeUrl" style="width:auto; border-radius:5px; border:1px; color:#bbb9b9 " />
+        </div>
+        <div class="mb-3 row p-1">
+            <div class="row p-4">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-danger form-control">DELETE</button>
+
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary  form-control">Back to list</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
