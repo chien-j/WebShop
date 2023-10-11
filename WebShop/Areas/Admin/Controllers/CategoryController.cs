@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shop.DataAccess.Repository;
 using Shop.DataAccess.Repository.IRepository;
+using Shop.Utility;
 using WebShop.Data;
 using WebShop.Models;
 
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Authorize(Roles =SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitofwork;
