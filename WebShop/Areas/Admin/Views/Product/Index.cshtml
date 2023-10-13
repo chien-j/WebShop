@@ -4,12 +4,12 @@
     <div class="row pt-4 pb-3">
         <div class="col-6">
             <h2 class="text-primary">
-                Product List
+                Danh sách sản phẩm 
             </h2>
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Product" asp-action="Upsert" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Create New
+                <i class="bi bi-plus-circle"></i> Tạo mới
             </a>
         </div>
     </div>
@@ -20,7 +20,7 @@
          <tr>
             <form asp-controller="Product" asp-action="Index">
                 <p>
-                    Title: <input type="text" name="SearchString" />
+                    Tìm kiếm theo tiêu đề: <input type="text" name="SearchString" />
                     <input type="submit" value="Tìm kiếm" />
                 </p>
             </form>
@@ -36,7 +36,7 @@
         </tr>
     </thead>
 
-   @*  <tbody>
+    <tbody>
         @foreach (var obj in Model)
         {
             <tr>
@@ -49,10 +49,10 @@
                 <td>
                     <div class=" btn-group" role="group">
                         <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
-                            <i class="bi bi-pencil-square"></i>  Edit
+                            <i class="bi bi-pencil-square"></i>  Chỉnh sửa
                         </a>
                         <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                            <i class="bi bi-trash"></i>Delete
+                            <i class="bi bi-trash"></i>Xóa
 
                         </a>
                         
@@ -61,9 +61,6 @@
 
             </tr>
         }
-    </tbody>  *@
+    </tbody> 
 
 </table>
-@section Scripts {
-    <script src="~/js/product.js"></script>
-}

@@ -13,7 +13,7 @@ using WebShop.Models;
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
 
     public class CompanyController : Controller
     {

@@ -4,12 +4,12 @@
     <div class="row pt-4 pb-3">
         <div class="col-6">
             <h2 class="text-primary">
-                Category List
+                DANH SÁCH CHUYÊN MỤC
             </h2>
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Create New
+                <i class="bi bi-plus-circle"></i> Thêm mới danh mục
             </a>
         </div>
     </div>
@@ -19,10 +19,10 @@
     <thead>
         <tr>
             <th>
-                Category Name
+                TÊN DANH MỤC
             </th>
             <th>
-                Category Display Order
+                THỨ TỰ HIỂN THỊ 
             </th>
             <th></th>
         </tr>
@@ -38,15 +38,13 @@
                 <td>
                     <div class="w-75 btn-group" role="group">
                         <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
-                            <i class="bi bi-pencil-square"></i>  Edit
+                            <i class="bi bi-pencil-square"></i>  Chỉnh sửa
                         </a>
                         <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                            <i class="bi bi-trash"></i>Delete
+                            <i class="bi bi-trash"></i>Xóa
 
                         </a>
-                        <a asp-controller="Category" asp-action="" class="btn btn-primary mx-2">
-                            <i class="bi bi-pencil-square"></i> Bảo trì
-                        </a>
+                        
                     </div>
                 </td>
 

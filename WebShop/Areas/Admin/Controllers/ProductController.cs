@@ -31,7 +31,7 @@ namespace WebShop.Areas.Admin.Controllers
             var productSR = from m in _unitofwork.Product.GetAll() select m;
             if (!String.IsNullOrEmpty(searchString))
             {
-                productSR = productSR.Where(s => s.Title!.Contains(searchString));
+                productSR = productSR.Where(s => s.Title.ToLower().Contains(searchString.ToLower()));
             }
             objProductList = productSR.ToList();
             //Demo sreach category

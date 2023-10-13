@@ -1,4 +1,4 @@
-﻿@using Shop.Utility
+﻿
 <!DOCTYPE html>
 
 <html lang="en">
@@ -12,12 +12,20 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="~/WebShop.styles.css" asp-append-version="true" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          rel="stylesheet" />
+    <!-- Google Fonts -->
+    
+
+
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebShop</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Piu Piu Cake</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,14 +33,12 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Trang chủ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        
                      
-                        @* @if (User.IsInRole(SD.Role_Admin))
-                        { *@
+                        @if (User.IsInRole(SD.Role_Admin))
+                        {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     QUản Lý
@@ -42,12 +48,12 @@
                                     <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Category" asp-action="Index">Danh mục</a></li>
                                     <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Product" asp-action="Index">Sản phẩm</a></li>
                                     <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Công ty</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                    </li>
                                 </ul>
                             </li>
-                        @* } *@
+                        }
                         
 
                     </ul>
@@ -65,7 +71,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - WebShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            
         </div>
     </footer>
     <script src="https://cdn.tiny.cloud/1/bejl7bfxjln572wfptlvjszv9jo83y0ptv9mn0hlc5z7te2x/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -74,6 +80,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
+    
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
