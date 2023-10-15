@@ -13,7 +13,6 @@ namespace WebShop.Models
         [DisplayName(" Tên danh mục")]
         public string ?Name { get; set; }
         [Required]
-        [Range(0, 150, ErrorMessage = "Không thể lớn hơn 150")]
         [DisplayName(" Thứ tự hiển thị danh mục")]
 
         public int DisplayOrder { get; set; }

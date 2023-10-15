@@ -24,19 +24,19 @@ namespace WebShop.Models
         [Display(Name = "Sự miêu tả")]
         [Required] public string? Description { get; set; }
         [Required]
-        [Display(Name = "Bảng giá")]
+        [Display(Name = "Giá bán")]
         public double ListPrice { get; set; }
 
         [Required]
-        [Display(Name = " Giá từ 1 - 50")]
+        [Display(Name = " Giá bán ưu đãi")]
         public double Price { get; set; }
 
         [Required]
-        [Display(Name = "Giá 50+")]
+        [Display(Name = "Giá bán ưu đãi trên 5 SP")]
         public double Price50 { get; set; }
 
         [Required]
-        [Display(Name = "Giá trên 100+")]
+        [Display(Name = "Giá bán ưu đãi trên 10 SP")]
         public double Price100 { get; set; }
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]

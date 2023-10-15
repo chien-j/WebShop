@@ -1,9 +1,14 @@
 ﻿@model IEnumerable<Product>
+<form action="@Url.Action("Index")" method="get">
+    <input type="text" name="searchString" placeholder="Nhập từ khóa tìm kiếm..." />
+    <input type="submit" value="Tìm kiếm" />
+</form>
 
 <div class="row pb-3">
     @foreach(var product in Model)
     {
         <div class=" col-lg-3 col-sm-6">
+
             <div class="row p-2">
                 <div class="col-12 p-1">
                     <div class="card border-0 shadow border-top border-5 rounded">
@@ -15,7 +20,7 @@
                             </div>
                             <div class="pl-1">
                                 <p class="text-dark text-opacity-75 text-center mb-0">
-                                    List Price:
+                                    Giá bán:
                                     <span class="text-decoration-line-through">
                                         @product.ListPrice.ToString("c"+"0")
                                     </span>
@@ -23,7 +28,7 @@
                             </div>
                             <div class="pl-1">
                                 <p class="text-dark text-opacity-75 text-center">
-                                    As low as:
+                                    Giá đang được ưu đãi:
                                     <span>
                                         @product.Price100.ToString("c"+"0")
                                     </span>
@@ -43,4 +48,5 @@
         </div>
     }
 </div>
+
 

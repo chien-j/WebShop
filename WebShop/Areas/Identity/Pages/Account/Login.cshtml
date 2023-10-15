@@ -52,7 +52,8 @@
         <p>
             <a id="forgot-password" asp-page="./ForgotPassword">Quên mật khẩu?</a>
         </p>
-        <p>Không phải là thành viên? <a asp-page="./Register"  asp-route-returnUrl="@Model.ReturnUrl">Đăng ký</a></p>
+        <p>Không phải là thành viên? <a asp-page="" asp-route-returnUrl="">Đăng ký</a></p>
+        @* <p>Không phải là thành viên? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Đăng ký</a></p> *@
         <p>or sign up with:</p>
         <button type="button" class="btn btn-link btn-floating mx-2">
             <i class="fab fa-facebook-f"></i>

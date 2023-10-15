@@ -25,9 +25,21 @@ namespace WebShop.Areas.Customer.Controllers
 
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString, int categoryId)
         {
             IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category");
+
+            // Nếu có chuỗi tìm kiếm, hãy lọc danh sách sản phẩm.
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                productList = productList.Where(p => p.Title.ToLower().Contains(searchString));
+            }
+            if (categoryId != 0)
+            {
+                productList = productList.Where(p => p.CategoryId == categoryId);
+            }
+
+            // Trả về danh sách sản phẩm.
             return View(productList);
         }
 
