@@ -12,6 +12,8 @@ namespace Shop.DataAccess.Repository
     public interface IOrderHeaderRepository : IRepository<OrderHeader>
     {
         void Update(OrderHeader obj);
-        void Save();
+        void UpdateSatus(int id, string orderStatus, string? paymentStatus = null);
+        void UpdateStripePaymentID(int id, string sessionId, string? paymentIntentId );
+		void Save();
     }
 }

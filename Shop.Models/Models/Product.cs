@@ -11,17 +11,17 @@ namespace WebShop.Models
         public int Id { get; set; }
         [Required]
 
-        [Display(Name = "Tiêu đề")]
+        [Display(Name = "Tên Bánh")]
         public string ?Title { get; set; }
 
         [Required]
-        [Display(Name = "Mã số tiêu chuẩn quốc tế")]
+        [Display(Name = "Mã số Bánh")]
         public string ?ISBN { get; set; }
 
         [Required]
-        [Display(Name = "Tác giả")]
+        [Display(Name = "Thợ làm bánh")]
         public string? Author { get; set; }
-        [Display(Name = "Sự miêu tả")]
+        [Display(Name = "Thông tin chi tiết")]
         [Required] public string? Description { get; set; }
         [Required]
         [Display(Name = "Giá bán")]
@@ -32,17 +32,19 @@ namespace WebShop.Models
         public double Price { get; set; }
 
         [Required]
-        [Display(Name = "Giá bán ưu đãi trên 5 SP")]
+        [Display(Name = "Bánh size XxX")]
         public double Price50 { get; set; }
 
         [Required]
-        [Display(Name = "Giá bán ưu đãi trên 10 SP")]
+        [Display(Name = "Bánh size XxX")]
         public double Price100 { get; set; }
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         [ValidateNever]
+        [Display(Name = "Thể loại")]
 
         public Category ?Category { get; set; }
+        [Display(Name = "Hình ảnh ")]
         [ValidateNever]
         public string ?ImggeUrl {  get; set; }
     }

@@ -63,7 +63,7 @@
 							</div>
 							<div class="row my-1">
 								<div class="col-3">
-									<label>State</label>
+									<label>Tình trạng</label>
 								</div>
 								<div class="col-9">
 									<input asp-for="OrderHeader.State" class="form-control" />
@@ -91,13 +91,13 @@
 											<h6 class="my-0">@details.Product.Title</h6>
 											<small class="text-muted">Quantity: @details.Count</small>
 									</div>
-										<span class="text-muted">@((details.Price * details.Count).ToString("c"))</span>
+										<span class="text-muted">@((details.Price * details.Count).ToString("c" + "0"))</span>
 								</li>	
 								}
 
 								<li class="list-group-item d-flex justify-content-between bg-light">
 									<small class="text-info">Tổng cộng (VNĐ)</small>
-									<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c")</strong>
+									<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c"+"0")</strong>
 								</li>
 							</ul>
 						</div>
@@ -108,13 +108,21 @@
 				<div class="row">
 					<div class="col-12 col-md-8 pt-2">
 						<p style="color:maroon; font-size:14px;">
-							Thời gian dự kiến :  Đồ ăn nhanh : 30 phút ~ 45 phút || Bánh sinh nhật  : 50 phút ~ 60 phút ( trong khung giờ cao điểm có thể tăng 30 phút)
-							@DateTime.Now.AddDays(1).ToShortDateString() - @DateTime.Now.AddDays(1).ToShortDateString()
+							Thời gian dự kiến :  Đồ ăn nhanh : 30 phút ~ 45 phút || Bánh sinh nhật  : 50 phút ~ 60 phút 
 						</p>
+				
+						<p style="color:maroon; font-size:14px;">
 						
+							@DateTime.Now.AddDays(1).ToShortDateString() - @DateTime.Now.AddDays(3).ToShortDateString()
+						</p>
+
+						<p style="color:Red; font-size:14px;">
+							(Lưu Ý: Trong khung giờ cao điểm có thể tăng 30 phút)
+
+						</p>
 					</div>
 					<div class="col-12 col-md-4">
-						<button type="submit" value="Place Order" class="btn btn-primary form-control">Đặt hàng</button>
+						<button type="submit" value="Place Order" class="btn btn-primary form-control">Đặt hàng </button>
 					</div>
 				</div>
 			</div>
