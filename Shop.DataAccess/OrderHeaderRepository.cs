@@ -31,7 +31,7 @@ namespace Shop.DataAccess
             _db.orderHeaders.Update(obj);
         }
 
-		public void UpdateSatus(int id, string orderStatus, string? paymentStatus = null)
+		public void UpdateStatus(int id, string orderStatus, string? paymentStatus = null)
 		{
             var orderFromDb = _db.orderHeaders.FirstOrDefault(u => u.Id == id);
             if (orderFromDb != null) 
