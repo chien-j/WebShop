@@ -71,9 +71,10 @@ namespace WebShop.Areas.Customer.Controllers
             else
             {
                 _unitofwork.ShoppingCart.Add(shoppingCart);
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitofwork.ShoppingCart.Get(u => u.ApplicationUserId == userId).Count);
             }
 
-            TempData["success"] = "Cart updated successfully";
+            TempData["success"] = "Giỏ hàng được thêm thành công";
             _unitofwork.Save();
 
             return  RedirectToAction(nameof(Index));

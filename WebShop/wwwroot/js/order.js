@@ -1,13 +1,32 @@
 ﻿var dataTable;
-
 $(document).ready(function () {
-    loadDataTable();
-});
+    var url = window.location.search;
+    if (url.includes("inprocess")) {
+        loadDataTable("inprocess");
+    }
+    else {
+        if (url.includes("completed")) {
+            loadDataTable("completed");
+        }
+        else {
+            if (url.includes("pending")) {
+                loadDataTable("pending");
+            }
+            else {
+                if (url.includes("approved")) {
+                    loadDataTable("approved");
+                }
+                else {
+                    loadDataTable("all");
+                }
+            }
+        }
+    }
 
-function loadDataTable() {
+});
+function loadDataTable(status) {
     dataTable = $('#tblData').DataTable({
-        "ajax": { url: '/Admin/Order/getall' }, dataSrc: ""
-    },
+        "ajax": { url: '/admin/order/getall?status=' + status },
         "columns": [
             { data: 'id', "width": "5%" },
             { data: 'name', "width": "25%" },
@@ -19,11 +38,11 @@ function loadDataTable() {
                 data: 'id',
                 "render": function (data) {
                     return `<div class="w-75 btn-group" role="group">
-                     <a href="/admin/product/upsert?id=${data}" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>               
-                     <a onClick=Delete('/admin/product/delete/${data}') class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                     <a href="/admin/order/details?orderId=${data}" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i></a>               
+                    
                     </div>`
                 },
-                "width": "25%"
+                "width": "10%"
             }
         ]
     });

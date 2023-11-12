@@ -28,9 +28,9 @@ namespace WebShop.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
-                new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
-                new Category { Id = 3, Name = "History", DisplayOrder = 3 }
+                new Category { Id = 1, Name = "Bánh Ngọt", DisplayOrder = 1 },
+                new Category { Id = 2, Name = "Bánh sinh nhật", DisplayOrder = 2 },
+                new Category { Id = 3, Name = "bánh bông lan", DisplayOrder = 3 }
                 );
 
             modelBuilder.Entity<Company>().HasData(
@@ -70,8 +70,8 @@ namespace WebShop.Data
                 new Product
                 {
                     Id = 1,
-                    Title = "Fortune of Time",
-                    Author = "Billy Spark",
+                    Title = "Bánh su kem",
+                    Author = "Chang",
                     Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                     ISBN = "SWD9999001",
                     ListPrice = 99,
