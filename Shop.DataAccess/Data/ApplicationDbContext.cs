@@ -72,84 +72,84 @@ namespace WebShop.Data
                     Id = 1,
                     Title = "Bánh su kem",
                     Author = "Chang",
-                    Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Description = "Bánh su kem là một trong những loại bánh ngọt vô cùng quen thuộc đối với người dân Việt Nam. \\r\\n\\r\\Bánh su kem là một loại bánh ngọt tráng miệng hấp dẫn khi mới ngửi hương vị giòn tan của bánh thôi thì bạn cũng đã đủ thấy thèm.. ",
                     ISBN = "SWD9999001",
                     ListPrice = 99,
                     Price = 90,
                     Price50 = 85,
                     Price100 = 80,
                     CategoryId = 1,
-                    ImggeUrl = ""
+                    ImggeUrl = "https://cdn.tgdd.vn/Files/2021/03/09/1333700/cac-loai-banh-ngot-duoc-yeu-thich-nhat-tai-viet-nam-202103090933064509.jpg"
                 },
                 new Product
                 {
                     Id = 2,
-                    Title = "Dark Skies",
-                    Author = "Nancy Hoover",
-                    Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Title = "Bánh Cupcake",
+                    Author = "NChang",
+                    Description = "Điều đặc biệt bên trong của chiếc bánh nhỏ nhỏ xinh xắn này chính là lớp kem tươi, mứt hoặc trái cây.\\r\\n\\r\\ Lớp bánh mềm xốp bên dưới hòa quyện với độ ngọt của mứt bên trên tạo ra một loại bánh không thể nào chối từ.. ",
                     ISBN = "CAW777777701",
                     ListPrice = 40,
                     Price = 30,
                     Price50 = 25,
                     Price100 = 20,
                     CategoryId = 1,
-                    ImggeUrl = ""
+                    ImggeUrl = "https://cdn.tgdd.vn/Files/2021/03/09/1333700/cac-loai-banh-ngot-duoc-yeu-thich-nhat-tai-viet-nam-202103090933169585.jpg"
                 },
                 new Product
                 {
                     Id = 3,
-                    Title = "Vanish in the Sunset",
-                    Author = "Julian Button",
-                    Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Title = "Bánh rán Dorayaki",
+                    Author = "JChang",
+                    Description = "Bánh rán Dorayaki gắn liền với một bộ phim hoạt hình mà tuổi thơ ai cũng đã từng xem qua đó chính là hoạt hình Doraemon. \\r\\n\\r\\Nếu bạn yêu thích chú mèo máy Doraemon thì bạn sẽ nhớ ngay là chú rất yêu món bánh này, mê đến nỗi phát cuồng lên.. ",
                     ISBN = "RITO5555501",
                     ListPrice = 55,
                     Price = 50,
                     Price50 = 40,
                     Price100 = 35,
                     CategoryId = 2,
-                    ImggeUrl = ""
+                    ImggeUrl = "https://cdn.tgdd.vn/Files/2021/03/09/1333700/cac-loai-banh-ngot-duoc-yeu-thich-nhat-tai-viet-nam-202103090933352429.jpg"
                 },
                 new Product
                 {
                     Id = 4,
-                    Title = "Cotton Candy",
-                    Author = "Abby Muscles",
-                    Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Title = "Bánh Muffin",
+                    Author = "AChang",
+                    Description = "Được nhiều người biết đến với tên gọi khác là “bánh mì nhanh”.\\r\\n\\r\\ Mới nhìn lần đầu, người ăn sẽ khó phân biệt bánh Muffin với bánh cupcake hai loại bánh này khá giống nhau ở kích thước và hình dáng bên ngoài. Tuy nhiên, Bách hóa XANH gợi ý cho bạn cách phân biệt 2 món bánh ngon này nhé!. ",
                     ISBN = "WS3333333301",
                     ListPrice = 70,
                     Price = 65,
                     Price50 = 60,
                     Price100 = 55,
                     CategoryId = 2,
-                    ImggeUrl = ""
+                    ImggeUrl = "https://cdn.tgdd.vn/Files/2021/03/09/1333700/cac-loai-banh-ngot-duoc-yeu-thich-nhat-tai-viet-nam-202103090934101233.jpg"
                 },
                 new Product
                 {
                     Id = 5,
-                    Title = "Rock in the Ocean",
-                    Author = "Ron Parker",
-                    Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Title = "Bánh Pancake",
+                    Author = "RChang",
+                    Description = "Hay còn được gọi là bánh “kếp tầng”. Nguyên liệu chính để làm nên chiếc bánh đó chính là bột, \\r\\n\\r\\trứng, sữa và bơ được nướng hoặc rán trên chảo.. ",
                     ISBN = "SOTJ1111111101",
                     ListPrice = 30,
                     Price = 27,
                     Price50 = 25,
                     Price100 = 20,
                     CategoryId = 3,
-                    ImggeUrl = ""
+                    ImggeUrl = "https://cdn.tgdd.vn/Files/2021/03/09/1333700/cac-loai-banh-ngot-duoc-yeu-thich-nhat-tai-viet-nam-202103090934213464.jpg"
                 },
                 new Product
                 {
                     Id = 6,
-                    Title = "Leaves and Wonders",
-                    Author = "Laura Phantom",
-                    Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
+                    Title = "Bánh Tiramisu",
+                    Author = "LChang",
+                    Description = "Một trong những loại bánh “sốt sồn sột” nhất hiện nay chính là bánh Tiramisu. Có nguồn gốc từ món bánh ngọt\\r\\n\\r\\ tráng miệng vị cà phê rất nổi tiếng của nước Ý mà ai cũng biết nên khi bắt đầu được du nhập vào Việt Nam đã chinh phục trái tim của người thưởng thức.. ",
                     ISBN = "FOT000000001",
                     ListPrice = 25,
                     Price = 23,
                     Price50 = 22,
                     Price100 = 20,
                     CategoryId = 3,
-                    ImggeUrl = ""
+                    ImggeUrl = "https://cdn.tgdd.vn/Files/2021/03/09/1333700/cac-loai-banh-ngot-duoc-yeu-thich-nhat-tai-viet-nam-202103090934310655.jpg"
                 }
                 );
 
