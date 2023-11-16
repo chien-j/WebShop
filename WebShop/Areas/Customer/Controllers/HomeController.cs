@@ -29,7 +29,7 @@ namespace WebShop.Areas.Customer.Controllers
         {
             IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category");
 
-            // Nếu có chuỗi tìm kiếm, hãy lọc danh sách sản phẩm.
+            // Nếu có chuỗi tìm kiếm,  lọc danh sách sản phẩm.
             if (!string.IsNullOrEmpty(searchString))
             {
                 productList = productList.Where(p => p.Title.ToLower().Contains(searchString));
@@ -38,8 +38,9 @@ namespace WebShop.Areas.Customer.Controllers
             {
                 productList = productList.Where(p => p.CategoryId == categoryId);
             }
+            
 
-            // Trả về danh sách sản phẩm.
+
             return View(productList);
         }
 
@@ -67,15 +68,17 @@ namespace WebShop.Areas.Customer.Controllers
             {
                 cartFromDb.Count += shoppingCart.Count;
                 _unitofwork.ShoppingCart.Update(cartFromDb);
+                _unitofwork.Save();
+
             }
             else
             {
                 _unitofwork.ShoppingCart.Add(shoppingCart);
-                HttpContext.Session.SetInt32(SD.SessionCart, _unitofwork.ShoppingCart.Get(u => u.ApplicationUserId == userId).Count);
+                _unitofwork.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitofwork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId).Count());
             }
 
             TempData["success"] = "Giỏ hàng được thêm thành công";
-            _unitofwork.Save();
 
             return  RedirectToAction(nameof(Index));
         }

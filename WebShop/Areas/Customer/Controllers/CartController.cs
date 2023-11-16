@@ -40,6 +40,7 @@ namespace WebShop.Areas.Customer.Controllers
                 cart.Price = GetPriceBasedOnQuantity(cart);
                 ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
             }
+            
             return View(ShoppingCartVM );
         }
 
@@ -181,7 +182,7 @@ namespace WebShop.Areas.Customer.Controllers
                     _unitofwork.OrderHeader.UpdateStatus(id, SD.StatusApproved, SD.PaymentStatusApproved);
                     _unitofwork.Save();
                 }
-
+                HttpContext.Session.Clear();
             }
 
 
@@ -202,9 +203,10 @@ namespace WebShop.Areas.Customer.Controllers
         }
         public IActionResult Minus(int cartId)
         {
-            var cartFromDb = _unitofwork.ShoppingCart.Get(u => u.Id == cartId);
+            var cartFromDb = _unitofwork.ShoppingCart.Get(u => u.Id == cartId, tracked: true);
             if(cartFromDb.Count <= 1) 
             {
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitofwork.ShoppingCart.GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count() - 1);
                 _unitofwork.ShoppingCart.Remove(cartFromDb);
 
             }
@@ -219,10 +221,9 @@ namespace WebShop.Areas.Customer.Controllers
         }
         public IActionResult Remove(int cartId)
         {
-            var cartFromDb = _unitofwork.ShoppingCart.Get(u => u.Id == cartId);
-           
+            var cartFromDb = _unitofwork.ShoppingCart.Get(u => u.Id == cartId, tracked:true);
+            HttpContext.Session.SetInt32(SD.SessionCart, _unitofwork.ShoppingCart.GetAll(u => u.ApplicationUserId == cartFromDb.ApplicationUserId).Count()-1);
             _unitofwork.ShoppingCart.Remove(cartFromDb);
-
             _unitofwork.Save();
             return RedirectToAction(nameof(Index));
         }
