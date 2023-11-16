@@ -11,20 +11,19 @@ using WebShop.Data;
 
 namespace Shop.DataAccess.Dblnitializer
 {
-    public class Dblnitializer : IDbInitializer
+    public class DbInitializer : IDbInitializer
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ApplicationDbContext _db;
 
-        public Dblnitializer(
+        public DbInitializer(
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            ApplicationDbContext db
-            )
+            ApplicationDbContext db)
         {
-            _userManager = userManager;
             _roleManager = roleManager;
+            _userManager = userManager;
             _db = db;
         }
 
@@ -47,21 +46,24 @@ namespace Shop.DataAccess.Dblnitializer
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Company)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee)).GetAwaiter().GetResult();
+                // nếu vai trò không được tạo thì chúng tôi cũng sẽ tạo người dùng quản trị
 
                 _userManager.CreateAsync(new ApplicationUser
                 {
                     UserName = "admin@piupiu.com",
                     Email = "admin@piupiu.com",
-                    Name = "PiuPiu",
+                    Name = "Piupiu",
                     PhoneNumber = "0988888888",
-                    StreetAddress = "HVNN VN",
+                    StreetAddress = "HVNN",
                     State = "IL",
-                    PostalCode = "888",
-                    City = "Gia Lam"
-                }, "Admin123@@").GetAwaiter().GetResult();
+                    PostalCode = "8888",
+                    City = "Ha noi"
+                }, "Admin123*").GetAwaiter().GetResult();
+
 
                 ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "admin@piupiu.com");
                 _userManager.AddToRoleAsync(user, SD.Role_Admin).GetAwaiter().GetResult();
+
             }
             // nếu vai trò không được tạo thì chúng tôi cũng sẽ tạo người dùng quản trị
 
