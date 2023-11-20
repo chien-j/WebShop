@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Quản lý người dùng";
+}
+
+<div class="container">
+    <h2>Danh sách người dùng</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Điện thoại</th>
+                <th>Công ty</th>
+                <th>Vai trò</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="userTableBody"></tbody>
+    </table>
+</div>
+
+@section scripts{
+    <script>
+     
+
+        $(document).ready(function () {
+            // Thực hiện cuộc gọi API để lấy dữ liệu người dùng
+            $.ajax({
+                type: "GET",
+                url: "/Admin/User/GetAll",
+                success: function (data) {
+                    // Xử lý dữ liệu trả về và nối vào cơ thể bảng
+                    var tableBody = $("#userTableBody");
+                    tableBody.empty(); // Xóa dữ liệu hiện tại
+
+                    $.each(data.dat, function (index, user) {
+                        var today = new Date().getTime();
+                        var lockout = new Date(user.lockoutEnd).getTime();
+
+                        var lockUnlockButton = (lockout > today) ?
+                            `<a onclick=LockUnlock('${user.id}') class="btn btn-danger text-white" style="cursor:pointer; width:150px;border: 1px solid #fff; ">
+                                <i class="bi bi-lock-fill"></i> Khóa
+                            </a>` :
+                            `<a onclick=LockUnlock('${user.id}') class="btn btn-success text-white" style="cursor:pointer; width:150px;border: 1px solid #fff;">
+                                <i class="bi bi-unlock-fill"></i> Mở khóa
+                            </a>`;
+
+
+
+                        var row = "<tr>" +
+                            "<td>" + user.userName + "</td>" +
+                            "<td>" + user.email + "</td>" +
+                            "<td>" + user.phoneNumber + "</td>" +
+                            "<td>" + user.name + "</td>" +
+                            "<td>" + user.role + "</td>" +
+                            "<td>" + lockUnlockButton +
+                            "<a href='/admin/user/RoleManagment?userId=" + user.id + "' class='btn btn-primary  text-white' style='cursor:pointer;border: 1px solid #fff; width:150px;'><i class='bi bi-pencil-square'></i> Quyền  cho phép</a></td>" + "</tr>";
+
+                        tableBody.append(row);
+                    });
+                },
+                error: function (error) {
+                    console.log("Lỗi khi truy xuất dữ liệu người dùng: " + error);
+                }
+            });
+        });
+
+        function LockUnlock(userId) {
+            // Thực hiện cuộc gọi API để khóa hoặc mở khóa người dùng
+            $.ajax({
+                type: "POST",
+                url: '/Admin/User/LockUnlock',
+                data: JSON.stringify(userId),
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.message);
+                        location.reload(); // Reload cả trang
+                    }
+                }
+            });
+        }
+        
+    </script>
+}
