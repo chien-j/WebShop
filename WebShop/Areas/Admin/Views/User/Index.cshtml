@@ -12,6 +12,8 @@
                 <th>Điện thoại</th>
                 <th>Công ty</th>
                 <th>Vai trò</th>
+                <th>Trạng thái </th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -20,9 +22,45 @@
 </div>
 
 @section scripts{
-    <script>
-     
+ 
 
+    <script>
+
+        function confirmDelete(userId) {
+            // Hiển thị SweetAlert để xác nhận xóa
+            Swal.fire({
+                title: 'Bạn có chắc chắn muốn xóa tài khoản này không?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Nếu người dùng xác nhận, thực hiện cuộc gọi API để xóa người dùng
+                    performDelete(userId);
+                }
+            });
+        }
+
+        function performDelete(userId) {
+            // Thực hiện cuộc gọi API để xóa người dùng
+            $.ajax({
+                type: "POST",
+                url: '/Admin/User/Delete',
+                data: JSON.stringify(userId),
+                contentType: "application/json",
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.message);
+                        location.reload(); // Reload cả trang
+                    } else {
+                        toastr.error(data.message);
+                    }
+                }
+            });
+        }
         $(document).ready(function () {
             // Thực hiện cuộc gọi API để lấy dữ liệu người dùng
             $.ajax({
@@ -39,22 +77,25 @@
 
                         var lockUnlockButton = (lockout > today) ?
                             `<a onclick=LockUnlock('${user.id}') class="btn btn-danger text-white" style="cursor:pointer; width:150px;border: 1px solid #fff; ">
-                                <i class="bi bi-lock-fill"></i> Khóa
-                            </a>` :
+                                        <i class="bi bi-lock-fill"></i> Khóa
+                                    </a>` :
                             `<a onclick=LockUnlock('${user.id}') class="btn btn-success text-white" style="cursor:pointer; width:150px;border: 1px solid #fff;">
-                                <i class="bi bi-unlock-fill"></i> Mở khóa
-                            </a>`;
+                                        <i class="bi bi-unlock-fill"></i> Mở khóa
+                                    </a>`;
 
-
+                        var deleteButton = `<a onclick=confirmDelete('${user.id}') class="btn btn-danger text-white" style="cursor:pointer; width:150px;border: 1px solid #fff;">
+                                        <i class="bi bi-trash"></i> Xóa
+                                    </a>`;
 
                         var row = "<tr>" +
-                            "<td>" + user.userName + "</td>" +
+                            "<td>" + user.name + "</td>" +
                             "<td>" + user.email + "</td>" +
                             "<td>" + user.phoneNumber + "</td>" +
-                            "<td>" + user.name + "</td>" +
+                            "<td>" + user.userName
+                            + "</td>" +
                             "<td>" + user.role + "</td>" +
-                            "<td>" + lockUnlockButton +
-                            "<a href='/admin/user/RoleManagment?userId=" + user.id + "' class='btn btn-primary  text-white' style='cursor:pointer;border: 1px solid #fff; width:150px;'><i class='bi bi-pencil-square'></i> Quyền  cho phép</a></td>" + "</tr>";
+                            "<td>" + lockUnlockButton + "</td>" +
+                            "<td>" + deleteButton + "</td>";
 
                         tableBody.append(row);
                     });
@@ -80,6 +121,5 @@
                 }
             });
         }
-        
     </script>
 }

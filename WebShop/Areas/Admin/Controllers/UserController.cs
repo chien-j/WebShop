@@ -30,10 +30,41 @@ namespace WebShop.Areas.Admin.Controllers
             return View();
         }
 
-        
+        [HttpGet]
+        public IActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            ApplicationUser user = _db.ApplicationUsers.Include(u => u.Company).FirstOrDefault(u => u.Id == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult Delete([FromBody] string id)
+        {
+            var user = _db.ApplicationUsers.FirstOrDefault(u => u.Id == id);
+
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Lỗi khi xóa người dùng" });
+            }
+
+            _db.ApplicationUsers.Remove(user);
+            _db.SaveChanges();
+
+            return Json(new { success = true, message = "Đã xóa người dùng thành công" });
+        }
 
 
-       
 
         #region API CALLS
         [HttpGet]
@@ -79,7 +110,7 @@ namespace WebShop.Areas.Admin.Controllers
             }
             else
             {
-                objFromDb.LockoutEnd = DateTime.Now.AddYears(100000);
+                objFromDb.LockoutEnd = DateTime.Now.AddYears(100);
             }
         
             _db.SaveChanges();
