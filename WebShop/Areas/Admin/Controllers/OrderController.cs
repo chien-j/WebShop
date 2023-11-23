@@ -99,7 +99,7 @@ namespace WebShop.Areas.Admin.Controllers
 
             _unitOfWork.OrderHeader.Update(orderHeader);
             _unitOfWork.Save();
-            TempData["Success"] = "Order Shipped Successfully.";
+            TempData["Success"] = "Đơn hàng đã được vận chuyển thành công.";
             return RedirectToAction(nameof(Details), new { orderId = OrderVM.OrderHeader.Id });
         }
 
@@ -128,7 +128,7 @@ namespace WebShop.Areas.Admin.Controllers
                 _unitOfWork.OrderHeader.UpdateStatus(orderHeader.Id, SD.StatusCancelled, SD.StatusCancelled);
             }
             _unitOfWork.Save();
-            TempData["Success"] = "Order Cancelled Successfully.";
+            TempData["Success"] = "Đơn hàng đã được hủy thành công.";
             return RedirectToAction(nameof(Details), new { orderId = OrderVM.OrderHeader.Id });
 
         }
@@ -226,25 +226,7 @@ namespace WebShop.Areas.Admin.Controllers
 
                 objOrderHeaders = _unitOfWork.OrderHeader.GetAll(u => u.ApplicationUserId == userId, includeProperties: "ApplicationUser");
             }
-            switch (status)
-            {
-                case "pending":
-                    objOrderHeaders = objOrderHeaders.Where(u => u.PaymentStatus == SD.PaymentStatusDelayedPayment);
-                    break;
-                case "inprocess":
-                    objOrderHeaders = objOrderHeaders.Where(u => u.OrderStatus == SD.StatusInProcess);
-                    break;
-                case "completed":
-                    objOrderHeaders = objOrderHeaders.Where(u => u.OrderStatus == SD.StatusShipped);
-                    break;
-                case "approved":
-                    objOrderHeaders = objOrderHeaders.Where(u => u.OrderStatus == SD.StatusApproved);
-                    break;
-                default:
-                    break;
-
-            }
-
+          
 
             return Json(new { data = objOrderHeaders });
         }

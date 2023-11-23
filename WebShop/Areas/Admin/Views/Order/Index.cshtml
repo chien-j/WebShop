@@ -1,80 +1,102 @@
-﻿﻿@{
-    var status = Context.Request.Query["status"];
-    var pending = "text-primary";
-    var inprocess = "text-primary";
-    var completed = "text-primary";
-    var approved = "text-primary";
-    var all = "text-primary";
-
-    switch (status)
-    {
-        case "pending":
-            pending = "active text-white bg-primary";
-            break;
-        case "inprocess":
-            inprocess = "active text-white bg-primary";
-            break;
-        case "completed":
-            completed = "active text-white bg-primary";
-            break;
-        case "approved":
-            approved = "active text-white bg-primary";
-            break;
-        default:
-            all = "active text-white bg-primary";
-            break;
-
-    }
-
-}
-<div class="card shadow border-0 my-4">
-    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="text-white py-2">Order List</h2>
-            </div>
-        </div>
+﻿<table class="table table-bordered table-striped" style="width:100%">
+    <div class="btn-group">
+        <button type="button" id="sortByDateNewest" class="btn btn-secondary">Ngày mới nhất</button>
+        <button type="button" id="sortByDateOldest" class="btn btn-secondary">Ngày cũ nhất</button>
     </div>
-    <div class="card-body p-4">
-      @*   <div class="d-flex justify-content-between pb-5 pt-2">
-            <span></span>
-            <ul class="list-group list-group-horizontal-sm">
-                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="inprocess">
-                <li class="list-group-item @inprocess">In Process</li>
-                </a>
-                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="pending">
-                <li class="list-group-item @pending">Payment Pending</li>
-                </a>
-                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="completed">
-                <li class="list-group-item @completed">Completed</li>
-                </a>
-                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="approved">
-                <li class="list-group-item @approved">Approved</li>
-                </a>
-                <a style="text-decoration:none;" asp-controller="Order" asp-action="Index" asp-route-status="all">
-                <li class="list-group-item @all">All</li>
-                </a>
-            </ul>
-        </div> *@
-        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên</th>
-                    <th>Số điện thoại</th>
-                    <th>Email</th>
-                    <th>Trạng thái</th>
-                    <th>Tổng cộng</th>
-                    <th>NDH</th>
-                    <th>GH</th>
-                    <th></th>
-                </tr>
-            </thead>
-        </table>
 
-    </div>
-</div>
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
+            <th>Trạng thái</th>
+            <th>Tổng cộng</th>
+            <th>Ngày đặt bánh</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="orderTableBody">
+        <!-- Dữ liệu sẽ được thêm vào đây -->
+    </tbody>
+</table>
 
 @section Scripts{
-    <script src="~/js/order.js"></script>
+    <script>
+        $(document).ready(function () {
+            var orders = []; // Lưu trữ dữ liệu đơn hàng
+
+            // Gọi API để lấy dữ liệu
+            $.ajax({
+                type: 'GET',
+                url: '/Admin/Order/GetAll',
+                success: function (data) {
+                    // Xử lý dữ liệu trả về
+                    orders = data.data;
+                    displayOrders(orders); // Hiển thị đơn hàng mặc định
+                }
+            });
+
+            // Sắp xếp theo ngày mới nhất khi nút được click
+            $('#sortByDateNewest').click(function () {
+                orders.sort(function (a, b) {
+                    return new Date(b.orderDate) - new Date(a.orderDate);
+                });
+                displayOrders(orders); // Hiển thị đơn hàng sau khi sắp xếp
+            });
+
+            // Sắp xếp theo ngày cũ nhất khi nút được click
+            $('#sortByDateOldest').click(function () {
+                orders.sort(function (a, b) {
+                    return new Date(a.orderDate) - new Date(b.orderDate);
+                });
+                displayOrders(orders); // Hiển thị đơn hàng sau khi sắp xếp
+            });
+
+            function displayOrders(orders) {
+                var tableBody = $('#orderTableBody'); // ID của phần tử HTML để chứa dữ liệu
+                // Xóa dữ liệu cũ trong bảng
+                tableBody.empty();
+
+                // Sử dụng một đối tượng để nhóm các đơn hàng theo ngày
+                var groupedOrders = groupOrdersByDate(orders);
+
+                // Duyệt qua từng nhóm và thêm vào bảng
+                for (var date in groupedOrders) {
+                    if (groupedOrders.hasOwnProperty(date)) {
+                        // Thêm tiêu đề ngày
+                        tableBody.append('<tr><td colspan="7" style="font-weight:bold;">' + date + '</td></tr>');
+
+                        // Duyệt qua các đơn hàng trong nhóm
+                        $.each(groupedOrders[date], function (index, order) {
+                            var orderDate = new Date(order.orderDate);
+                            var formattedDate = orderDate.toLocaleDateString();
+                            // Thêm liên kết chi tiết vào mỗi hàng của bảng
+                            var detailsLink = '/admin/order/details?orderId=' + order.id;
+                            var detailsButton = '<a href="' + detailsLink + '" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i></a>';
+                            tableBody.append('<tr><td>' + order.name + '</td><td>' + order.phoneNumber + '</td><td>' + order.applicationUser.email + '</td><td>' + order.orderStatus + '</td><td>' + order.orderTotal + '</td><td>' + formattedDate + '</td><td>' + detailsButton + '</td></tr>');
+                        });
+                    }
+                }
+            }
+
+            function groupOrdersByDate(orders) {
+                // Đối tượng để nhóm các đơn hàng theo ngày
+                var groupedOrders = {};
+
+                // Duyệt qua từng đơn hàng và nhóm chúng theo ngày
+                $.each(orders, function (index, order) {
+                    var orderDate = new Date(order.orderDate);
+                    var formattedDate = orderDate.toLocaleDateString();
+
+                    if (!groupedOrders[formattedDate]) {
+                        groupedOrders[formattedDate] = [];
+                    }
+
+                    groupedOrders[formattedDate].push(order);
+                });
+
+                return groupedOrders;
+            }
+        });
+    </script>
 }
