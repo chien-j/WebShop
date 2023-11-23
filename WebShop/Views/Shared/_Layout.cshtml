@@ -54,10 +54,7 @@
                         <a class="nav-link navbar-nav " asp-area="Customer" asp-controller="Home" asp-action="Index">Trang chủ</a>
                     </div>
 
-                    <div class="nav-item">
-                        <a class=" nav-link navbar-nav " asp-area="Admin" asp-controller="Order" asp-action="Index">Đơn Hàng</a>
-
-                    </div>
+                    
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
                                 <a class="nav-link navbar-nav " asp-area="Customer" asp-controller="Cart" asp-action="Index">
@@ -65,9 +62,13 @@
                                 </a>
                             </li>
                         </ul>
-                       
-                   
+                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Customer) || User.IsInRole(SD.Role_Employee))
+                    {
+                        <div class="nav-item">
+                            <a class=" nav-link navbar-nav " asp-area="Admin" asp-controller="Order" asp-action="Index">Đơn Hàng</a>
 
+                        </div>
+                    }
 
                     <div class="nav-item">
                         @if (User.IsInRole(SD.Role_Admin))
@@ -83,10 +84,9 @@
                                         <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Product" asp-action="Index">Sản phẩm</a></li>
                                          <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Công ty</a></li>
                                         <li><a class=" dropdown-item nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Tạo người dùng</a></li>
-                                    <li class="nav-item">
-                                    <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                    </li>
                                         <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">tài khoản người dùng</a></li>
+                                   
+                                        
                                         
                                     </ul>
                                 </li>

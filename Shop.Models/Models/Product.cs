@@ -32,11 +32,11 @@ namespace WebShop.Models
         public double Price { get; set; }
 
         [Required]
-        [Display(Name = "Bánh size XxX")]
+        [Display(Name = "Bánh Sl 50")]
         public double Price50 { get; set; }
 
         [Required]
-        [Display(Name = "Bánh size XxX")]
+        [Display(Name = "Bánh sl100")]
         public double Price100 { get; set; }
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
