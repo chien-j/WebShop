@@ -209,7 +209,7 @@ namespace WebShop.Areas.Admin.Controllers
         #region API CALLS
 
         [HttpGet]
-        public IActionResult GetAll(string status)
+        public IActionResult GetAll()
         {
             IEnumerable<OrderHeader> objOrderHeaders;
 

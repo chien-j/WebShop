@@ -46,27 +46,30 @@
 
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav me-auto">
-                   
-                    </ul>
-                  
-                    <div class="nav-item">
-                        <a class="nav-link navbar-nav " asp-area="Customer" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        
                     </div>
+                     <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link navbar-nav " asp-area="Customer" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link navbar-nav " asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                @await Component.InvokeAsync("ShoppingCart")
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                        <a class="nav-link navbar-nav " asp-area="Customer" asp-controller="Home" asp-action="Privacy">Liên Hệ trực tiếp</a>
+                        </li>
 
-                    <div class="nav-item">
-                        <a class=" nav-link navbar-nav " asp-area="Admin" asp-controller="Order" asp-action="Index">Đơn Hàng</a>
 
-                    </div>
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link navbar-nav " asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                                    @await Component.InvokeAsync("ShoppingCart")
-                                </a>
-                            </li>
-                        </ul>
-                       
-                   
+                </ul>
+                @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee) || User.IsInRole(SD.Role_Customer))
+                    {
+                        <div class="nav-item">
+                            <a class=" nav-link navbar-nav " asp-area="Admin" asp-controller="Order" asp-action="Index">Đơn Hàng</a>
+                        </div>
+                    }
+
 
 
                     <div class="nav-item">
@@ -83,9 +86,6 @@
                                         <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Product" asp-action="Index">Sản phẩm</a></li>
                                          <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Công ty</a></li>
                                         <li><a class=" dropdown-item nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Tạo người dùng</a></li>
-                                    <li class="nav-item">
-                                    <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                    </li>
                                         <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">tài khoản người dùng</a></li>
                                         
                                     </ul>
