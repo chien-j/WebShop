@@ -224,9 +224,10 @@ namespace WebShop.Areas.Admin.Controllers
                 var claimsIdentity = (ClaimsIdentity)User.Identity;
                 var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                objOrderHeaders = _unitOfWork.OrderHeader.GetAll(u => u.ApplicationUserId == userId, includeProperties: "ApplicationUser");
+                objOrderHeaders = _unitOfWork.OrderHeader
+                    .GetAll(u => u.ApplicationUserId == userId, includeProperties: "ApplicationUser");
             }
-          
+
 
             return Json(new { data = objOrderHeaders });
         }
