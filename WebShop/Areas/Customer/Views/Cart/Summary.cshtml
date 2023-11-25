@@ -63,16 +63,16 @@
 							</div>
 							<div class="row my-1">
 								<div class="col-3">
-									<label>Tình trạng</label>
+									<label>Kích cỡ bánh</label>
 								</div>
 								<div class="col-9">
-									<input asp-for="OrderHeader.State" class="form-control" />
+									<input asp-for="OrderHeader.State" id="cakeSizeInput" type="text" class="form-control" />
 									<span asp-validation-for="OrderHeader.State" class="text-danger"></span>
 								</div>
 							</div>
 							<div class="row my-1">
 								<div class="col-3">
-									<label>mã bưu điện</label>
+									<label>Ghi chú</label>
 								</div>
 								<div class="col-9">
 									<input asp-for="OrderHeader.PostalCode" class="form-control" />
@@ -110,7 +110,14 @@
 						<p style="color:maroon; font-size:14px;">
 							Thời gian dự kiến :  Đồ ăn nhanh : 30 phút ~ 45 phút || Bánh sinh nhật  : 50 phút ~ 60 phút 
 						</p>
-				
+						<p style="color:Red; font-size:14px;">
+							Bánh hình chữ nhật : XXL 15 - 30 Cm......
+							
+						</p>
+						<p style="color:Red; font-size:14px;">
+
+							Bánh hình tròn : 14 cm.......
+						</p>
 						<p style="color:maroon; font-size:14px;">
 						
 							@DateTime.Now.AddDays(1).ToShortDateString() - @DateTime.Now.AddDays(3).ToShortDateString()
@@ -129,3 +136,25 @@
 		</div>
 	</div>
 </form>
+
+@section Scripts{
+
+	<partial name="_ValidationScriptsPartial" />
+	<script>
+		function validateInput() {
+			var cakeSize = document.getElementById("cakeSizeInput").value;
+
+			if (cakeSize.trim() === "") {
+				Swal.fire({
+					icon: 'error',
+					title: 'Chú ý...',
+					text: 'Vui lòng nhập kích cỡ bánh!',
+				});
+				return false;
+			}
+			return true;
+		}
+	</script>
+
+
+}
