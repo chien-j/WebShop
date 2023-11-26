@@ -27,9 +27,11 @@ namespace WebShop.Areas.Customer.Controllers
 
         public IActionResult Index(string searchString, int categoryId)
         {
+            ViewBag.Categories = _unitofwork.Category.GetAll(); // Điều này giả sử bạn có một phương thức GetAll trong repository Category
+
             IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category");
 
-            // Nếu có chuỗi tìm kiếm,  lọc danh sách sản phẩm.
+            // Nếu có chuỗi tìm kiếm, lọc danh sách sản phẩm.
             if (!string.IsNullOrEmpty(searchString))
             {
                 productList = productList.Where(p => p.Title.ToLower().Contains(searchString));
@@ -38,11 +40,12 @@ namespace WebShop.Areas.Customer.Controllers
             {
                 productList = productList.Where(p => p.CategoryId == categoryId);
             }
-            
-
 
             return View(productList);
         }
+
+
+       
 
         public IActionResult Details(int productId)
         {

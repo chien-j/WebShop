@@ -59,7 +59,7 @@ namespace WebShop.Areas.Customer.Controllers
             ShoppingCartVM.OrderHeader.PhoneNumber = ShoppingCartVM.OrderHeader.ApplicationUser.PhoneNumber;
             ShoppingCartVM.OrderHeader.StreetAddress = ShoppingCartVM.OrderHeader.ApplicationUser.StreetAddress;
             ShoppingCartVM.OrderHeader.City = "Hà Nội";
-            ShoppingCartVM.OrderHeader.State = ShoppingCartVM.OrderHeader.ApplicationUser.State;
+            ShoppingCartVM.OrderHeader.State = "Vui lòng để trong tủ mát";
             // Kiểm tra giá trị PostalCode và sử dụng giá trị mặc định nếu cần
             ShoppingCartVM.OrderHeader.PostalCode =
                 string.IsNullOrEmpty(ShoppingCartVM.OrderHeader.ApplicationUser.PostalCode)

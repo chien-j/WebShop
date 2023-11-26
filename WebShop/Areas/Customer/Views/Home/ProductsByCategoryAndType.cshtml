@@ -1,23 +1,7 @@
 ﻿@model IEnumerable<Product>
+
 <div class="row pb-3">
-    <div class="col-lg-6 col-sm-12">
-        <form method="get" action="@Url.Action("Index", "Home")">
-            <div class="form-group">
-                <label for="categoryId">Chọn danh mục:</label>
-                <select class="form-control" id="categoryId" name="categoryId">
-                    <option value="">-- Tất cả --</option>
-                    @foreach (var category in ViewBag.Categories)
-                    {
-                        <option value="@category.Id">@category.Name</option>
-                    }
-                </select>
-            </div>
-        </form>
-        
-    </div>
-</div>
-<div class="row pb-3">
-    @foreach(var product in Model)
+    @foreach (var product in Model)
     {
         <div class=" col-lg-3 col-sm-6">
 
@@ -28,12 +12,12 @@
                         <div class="card-body pb-0">
                             <div class="pl-1">
                                 <p style="height:50px;" class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Title</p>
-                                
+
                             </div>
                             <div class="pl-1">
-                              
+
                                 <p class="text-dark text-opacity-75 text-center mb-0">
-                                   Size bánh:
+                                    Size bánh:
                                     <span class="text-decoration-black font-weight-bold">
                                         @product.ISBN
                                     </span>
@@ -61,13 +45,3 @@
         </div>
     }
 </div>
-
-
-@section Scripts{
-    <script>
-        // Thêm sự kiện onchange cho dropdown list để tự động gửi yêu cầu khi giá trị thay đổi
-        document.getElementById('categoryId').addEventListener('change', function () {
-            this.form.submit(); // Gửi yêu cầu khi giá trị thay đổi
-        });
-    </script>
-}

@@ -62,11 +62,11 @@
                 <label asp-for="Input.City">Thành Phố</label>
                 <span asp-validation-for="Input.City" class="text-danger"></span>
             </div>
-            <div class="form-floating mb-3">
+            @* <div class="form-floating mb-3">
                 <input asp-for="Input.PostalCode" class="form-control" placeholder="name@example.com" />
                 <label asp-for="Input.PostalCode">Mã bưu điện</label>
                 <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
-            </div>
+            </div> *@
            
             @if(User.IsInRole(SD.Role_Admin))
             {
@@ -76,12 +76,12 @@
                     </select>
 
                 </div>
-                <div class="form-floating mb-3">
+                @* <div class="form-floating mb-3">
                     <select asp-for="Input.CompanyId" asp-items="@Model.Input.CompanyList" class="form-select">
                         <option disabled selected>- Chọn công ty -</option>
                     </select>
 
-                </div>
+                </div> *@
             }
             
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Đăng ký</button>

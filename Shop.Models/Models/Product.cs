@@ -15,7 +15,7 @@ namespace WebShop.Models
         public string ?Title { get; set; }
 
         [Required]
-        [Display(Name = "Mã số Bánh")]
+        [Display(Name = "Size Bánh")]
         public string ?ISBN { get; set; }
 
         [Required]
@@ -24,11 +24,11 @@ namespace WebShop.Models
         [Display(Name = "Thông tin chi tiết")]
         [Required] public string? Description { get; set; }
         [Required]
-        [Display(Name = "Giá bán")]
+        [Display(Name = "Giá bán - Gốc")]
         public double ListPrice { get; set; }
 
         [Required]
-        [Display(Name = " Giá bán ưu đãi")]
+        [Display(Name = " Giá bán ")]
         public double Price { get; set; }
 
         [Required]

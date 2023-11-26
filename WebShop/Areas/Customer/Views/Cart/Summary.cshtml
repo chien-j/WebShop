@@ -63,10 +63,10 @@
 							</div>
 							<div class="row my-1">
 								<div class="col-3">
-									<label>Kích cỡ bánh</label>
+									<label>Bảo quản</label>
 								</div>
 								<div class="col-9">
-									<input asp-for="OrderHeader.State" id="cakeSizeInput" type="text" class="form-control" />
+									<input asp-for="OrderHeader.State" id="cakeSizeInput" type="text" class="form-control" readonly />
 									<span asp-validation-for="OrderHeader.State" class="text-danger"></span>
 								</div>
 							</div>
@@ -74,7 +74,7 @@
 								<div class="col-3">
 									<label>Ghi chú</label>
 								</div>
-								<div class="col-9">
+								<div class="col-9" >
 									<input asp-for="OrderHeader.PostalCode" class="form-control" />
 									<span asp-validation-for="OrderHeader.PostalCode" class="text-danger"></span>
 								</div>
@@ -108,16 +108,9 @@
 				<div class="row">
 					<div class="col-12 col-md-8 pt-2">
 						<p style="color:maroon; font-size:14px;">
-							Thời gian dự kiến :  Đồ ăn nhanh : 30 phút ~ 45 phút || Bánh sinh nhật  : 50 phút ~ 60 phút 
+							Thời gian dự kiến :  Đồ ăn nhanh : 30 phút ~ 45 phút || Bánh sinh nhật  : Tùy vào độ khó 
 						</p>
-						<p style="color:Red; font-size:14px;">
-							Bánh hình chữ nhật : XXL 15 - 30 Cm......
-							
-						</p>
-						<p style="color:Red; font-size:14px;">
-
-							Bánh hình tròn : 14 cm.......
-						</p>
+						
 						<p style="color:maroon; font-size:14px;">
 						
 							@DateTime.Now.AddDays(1).ToShortDateString() - @DateTime.Now.AddDays(3).ToShortDateString()

@@ -37,7 +37,7 @@ namespace Shop.Models.Models
         public string StreetAddress { get; set; }
         [Required]
         public string City { get; set; }
-		[Required(ErrorMessage = "Vui lòng nhập kích cỡ bánh.")]
+		
 		public string State { get; set; }
         [Required]
         public string PostalCode { get; set; }

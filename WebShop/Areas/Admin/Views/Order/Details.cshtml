@@ -81,20 +81,7 @@
                                     }
                                 </div>
                             </div>
-                            <div class="row my-1">
-                                <div class="col-3">Kích cỡ bánh</div>
-                                <div class="col-9">
-                                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
-                                    {
-                                        <input asp-for="OrderHeader.State" type="text" class="form-control" />
-                                        <span asp-validation-for="OrderHeader.State" class="text-danger"></span>
-                                    }
-                                    else
-                                    {
-                                        <input asp-for="OrderHeader.State" readonly type="text" class="form-control" />
-                                    }
-                                </div>
-                            </div>
+                            
                             <div class="row my-1">
                                 <div class="col-3">
                                     Ghi chú
@@ -126,7 +113,7 @@
                                 </div>
                             </div>
                             <div class="row my-1">
-                                <div class="col-3">Vận chuyển</div>
+                                <div class="col-3">Tên người giao bánh - SĐT</div>
                                 <div class="col-9">
                                     @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
                                     {
@@ -139,7 +126,7 @@
                                 </div>
                             </div>
                             <div class="row my-1">
-                                <div class="col-3">Theo dõi</div>
+                                <div class="col-3">Mã theo dõi</div>
                                 <div class="col-9">
                                     @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
                                     {
@@ -305,7 +292,8 @@
                 Swal.fire({
                     icon: 'error',
                     title: 'Chú ý.....',
-                    text: 'Vui lòng nhập mã theo dõi!',
+                    text: 'Vui lòng nhập mã theo dõi!\n Mã theo dõi là ngày đi giao bánh.VD: 20112023',
+
                 });
                 return false;
             }
@@ -313,7 +301,7 @@
                 Swal.fire({
                     icon: 'error',
                     title: 'Chú ý.....',
-                    text: 'Vui lòng nhập người vận chuyển!',
+                    text: 'Vui lòng nhập thông tin  người giao bánh - SĐT!',
                 });
                 return false;
             }
