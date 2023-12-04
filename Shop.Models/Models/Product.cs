@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Shop.Models.Models;
 
 namespace WebShop.Models
 {
@@ -42,10 +43,14 @@ namespace WebShop.Models
         [ForeignKey("CategoryId")]
         [ValidateNever]
         [Display(Name = "Thể loại")]
-
         public Category ?Category { get; set; }
-        [Display(Name = "Hình ảnh ")]
+
+
         [ValidateNever]
-        public string ?ImggeUrl {  get; set; }
+        public List<ProductImage> ProductImages { get; set; }
+
+        [ValidateNever]
+        public List<ProductSize> ProductSizes { get; set; }
+
     }
 }

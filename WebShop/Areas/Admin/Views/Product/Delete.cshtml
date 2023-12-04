@@ -5,7 +5,7 @@
     <div class="border p-3 mt-4">
 
         <div class="row pb-2">
-            <h2 class="text-primary"> Delete Product</h2>
+            <h2 class="text-primary"> Xóa Sản Phẩm</h2>
             <hr />
 
         </div>
@@ -43,22 +43,15 @@
             <label asp-for="Price100" class="p-2"></label>
             <input asp-for="Price100" type="text" class="form-control" />
         </div>
-        <div class="mb-3 row p-1 form-floating">
-            <label asp-for="ImggeUrl" class="p-2"></label>
-            <input type="file" name="file" asp-for="ImggeUrl" class="form-control" />
-
-        </div>
-        <div class="mb-3 row p-1">
-            <img src="@Model.ImggeUrl" style="width:auto; border-radius:5px; border:1px; color:#bbb9b9 " />
-        </div>
+       
         <div class="mb-3 row p-1">
             <div class="row p-4">
                 <div class="col-6 col-md-3">
-                    <button type="submit" class="btn btn-danger form-control">DELETE</button>
+                    <button type="submit" class="btn btn-danger form-control">Xóa</button>
 
                 </div>
                 <div class="col-6 col-md-3">
-                    <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary  form-control">Back to list</a>
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary  form-control">Quay trở về</a>
                 </div>
 
             </div>

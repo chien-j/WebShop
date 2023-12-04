@@ -4,13 +4,13 @@
         <form method="get" action="@Url.Action("Index", "Home")">
             <div class="form-group">
                 <label for="categoryId">Chọn danh mục:</label>
-                <select class="form-control" id="categoryId" name="categoryId">
+                @* <select class="form-control" id="categoryId" name="categoryId">
                     <option value="">-- Tất cả --</option>
                     @foreach (var category in ViewBag.Categories)
                     {
                         <option value="@category.Id">@category.Name</option>
                     }
-                </select>
+                </select> *@
             </div>
         </form>
         
@@ -23,10 +23,25 @@
 
             <div class="row p-2">
                 <div class="col-12 p-1">
-                    <div class="card border-0 shadow border-top border-5 rounded" style="height:450px;">
-                        <img width="300" height="300" src="@product.ImggeUrl" style="height:250px;" class=" card col-md-auto " alt="Responsive image" />
+                    <div class="card border-0 shadow border-top border-5 rounded" style="height:550px;">
+
+
+
+                        
                         <div class="card-body pb-0">
                             <div class="pl-1">
+                                @if (product.ProductImages != null && product.ProductImages.Count() > 0)
+                                {
+                                    <img src="@product.ProductImages.FirstOrDefault().ImageUrl" class="card-img-top rounded" style="
+                                 height: 260px; />
+                                }
+                                else
+                                {
+                                    <img src="https://placehold.co/500x600/png" class="card-img-top rounded" />
+                                }
+
+                            </div>
+                            <div class="pl-1" style="margin: 25px;">
                                 <p style="height:50px;" class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Title</p>
                                 
                             </div>

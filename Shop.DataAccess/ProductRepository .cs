@@ -36,10 +36,11 @@ namespace Shop.DataAccess
                 objFromDb.Description = obj.Description;
                 objFromDb.CategoryId = obj.CategoryId;
                 objFromDb.Author = obj.Author;
-                if (obj.ImggeUrl != null)
-                {
-                    objFromDb.ImggeUrl = obj.ImggeUrl;
-                }
+                objFromDb.ProductImages = obj.ProductImages;
+                //if (obj.ImggeUrl != null)
+                //{
+                //    objFromDb.ImggeUrl = obj.ImggeUrl;
+                //}
             }
         }
     }

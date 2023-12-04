@@ -27,36 +27,37 @@ namespace WebShop.Areas.Customer.Controllers
 
         public IActionResult Index(string searchString, int categoryId)
         {
-            ViewBag.Categories = _unitofwork.Category.GetAll(); // Điều này giả sử bạn có một phương thức GetAll trong repository Category
+            //ViewBag.Categories = _unitofwork.Category.GetAll(); // Điều này giả sử bạn có một phương thức GetAll trong repository Category
 
-            IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category");
+            //IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category, ProductImages");
 
-            // Nếu có chuỗi tìm kiếm, lọc danh sách sản phẩm.
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                productList = productList.Where(p => p.Title.ToLower().Contains(searchString));
-            }
-            if (categoryId != 0)
-            {
-                productList = productList.Where(p => p.CategoryId == categoryId);
-            }
-
+            //Nếu có chuỗi tìm kiếm, lọc danh sách sản phẩm.
+            //if (!string.IsNullOrEmpty(searchString))
+            //{
+            //    productList = productList.Where(p => p.Title.ToLower().Contains(searchString));
+            //}
+            //if (categoryId != 0)
+            //{
+            //    productList = productList.Where(p => p.CategoryId == categoryId);
+            //}
+            IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
             return View(productList);
         }
 
 
-       
+
 
         public IActionResult Details(int productId)
         {
             ShoppingCart cart = new()
             {
-                Product = _unitofwork.Product.Get(u => u.Id == productId, includeProperties: "Category"),
+                Product = _unitofwork.Product.Get(u => u.Id == productId, includeProperties: "Category,ProductImages"),
                 Count = 1,
                 ProductId = productId
             };
             return View(cart);
         }
+
         [HttpPost]
         [Authorize]
         public IActionResult Details(ShoppingCart shoppingCart)
