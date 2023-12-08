@@ -87,13 +87,9 @@ namespace Shop.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ISBN = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Size = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ListPrice = table.Column<double>(type: "float", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    Price50 = table.Column<double>(type: "float", nullable: false),
-                    Price100 = table.Column<double>(type: "float", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -282,7 +278,6 @@ namespace Shop.DataAccess.Migrations
                     OrderTotal = table.Column<double>(type: "float", nullable: false),
                     OrderStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PaymentStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TrackingNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Carrier = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PaymentDueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -372,27 +367,9 @@ namespace Shop.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Companies",
-                columns: new[] { "Id", "City", "Name", "PhoneNumber", "PostalCode", "State", "StreetAddress" },
-                values: new object[,]
-                {
-                    { 1, "Tech City", "Tech Solution", "6669990000", "12121", "IL", "123 Tech St" },
-                    { 2, "Vid City", "Vivid Books", "7779990000", "66666", "IL", "999 Vid St" },
-                    { 3, "Lala land", "Readers Club", "1113335555", "99999", "NY", "999 Main St" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Author", "CategoryId", "Description", "ISBN", "ListPrice", "Price", "Price100", "Price50", "Title" },
-                values: new object[,]
-                {
-                    { 1, "Chang", 1, "Bánh su kem là một trong những loại bánh ngọt vô cùng quen thuộc đối với người dân Việt Nam. \\r\\n\\r\\Bánh su kem là một loại bánh ngọt tráng miệng hấp dẫn khi mới ngửi hương vị giòn tan của bánh thôi thì bạn cũng đã đủ thấy thèm.. ", "SWD9999001", 99.0, 90.0, 80.0, 85.0, "Bánh su kem" },
-                    { 2, "NChang", 1, "Điều đặc biệt bên trong của chiếc bánh nhỏ nhỏ xinh xắn này chính là lớp kem tươi, mứt hoặc trái cây.\\r\\n\\r\\ Lớp bánh mềm xốp bên dưới hòa quyện với độ ngọt của mứt bên trên tạo ra một loại bánh không thể nào chối từ.. ", "CAW777777701", 40.0, 30.0, 20.0, 25.0, "Bánh Cupcake" },
-                    { 3, "JChang", 2, "Bánh rán Dorayaki gắn liền với một bộ phim hoạt hình mà tuổi thơ ai cũng đã từng xem qua đó chính là hoạt hình Doraemon. \\r\\n\\r\\Nếu bạn yêu thích chú mèo máy Doraemon thì bạn sẽ nhớ ngay là chú rất yêu món bánh này, mê đến nỗi phát cuồng lên.. ", "RITO5555501", 55.0, 50.0, 35.0, 40.0, "Bánh rán Dorayaki" },
-                    { 4, "AChang", 2, "Được nhiều người biết đến với tên gọi khác là “bánh mì nhanh”.\\r\\n\\r\\ Mới nhìn lần đầu, người ăn sẽ khó phân biệt bánh Muffin với bánh cupcake hai loại bánh này khá giống nhau ở kích thước và hình dáng bên ngoài. Tuy nhiên, Bách hóa XANH gợi ý cho bạn cách phân biệt 2 món bánh ngon này nhé!. ", "WS3333333301", 70.0, 65.0, 55.0, 60.0, "Bánh Muffin" },
-                    { 5, "RChang", 3, "Hay còn được gọi là bánh “kếp tầng”. Nguyên liệu chính để làm nên chiếc bánh đó chính là bột, \\r\\n\\r\\trứng, sữa và bơ được nướng hoặc rán trên chảo.. ", "SOTJ1111111101", 30.0, 27.0, 20.0, 25.0, "Bánh Pancake" },
-                    { 6, "LChang", 3, "Một trong những loại bánh “sốt sồn sột” nhất hiện nay chính là bánh Tiramisu. Có nguồn gốc từ món bánh ngọt\\r\\n\\r\\ tráng miệng vị cà phê rất nổi tiếng của nước Ý mà ai cũng biết nên khi bắt đầu được du nhập vào Việt Nam đã chinh phục trái tim của người thưởng thức.. ", "FOT000000001", 25.0, 23.0, 20.0, 22.0, "Bánh Tiramisu" }
-                });
+                columns: new[] { "Id", "CategoryId", "Description", "Price", "Size", "Title" },
+                values: new object[] { 1, 1, "Bánh sinh nhật cổ điển là một trong những loại bánh ngọt vô cùng quen thuộc đối với người dân Việt Nam. ", 90000.0, "S", "Bánh sinh nhật cổ điển" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

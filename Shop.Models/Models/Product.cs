@@ -17,28 +17,18 @@ namespace WebShop.Models
 
         [Required]
         [Display(Name = "Size Bánh")]
-        public string ?ISBN { get; set; }
+        public string ?Size { get; set; }
 
-        [Required]
-        [Display(Name = "Thợ làm bánh")]
-        public string? Author { get; set; }
+       
         [Display(Name = "Thông tin chi tiết")]
         [Required] public string? Description { get; set; }
-        [Required]
-        [Display(Name = "Giá bán - Gốc")]
-        public double ListPrice { get; set; }
+       
 
         [Required]
         [Display(Name = " Giá bán ")]
         public double Price { get; set; }
 
-        [Required]
-        [Display(Name = "Bánh Sl 50")]
-        public double Price50 { get; set; }
-
-        [Required]
-        [Display(Name = "Bánh sl100")]
-        public double Price100 { get; set; }
+       
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         [ValidateNever]

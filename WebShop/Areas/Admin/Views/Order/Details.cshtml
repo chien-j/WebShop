@@ -125,19 +125,7 @@
                                     }
                                 </div>
                             </div>
-                            <div class="row my-1">
-                                <div class="col-3">Mã theo dõi</div>
-                                <div class="col-9">
-                                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
-                                    {
-                                        <input asp-for="OrderHeader.TrackingNumber" id="trackingNumber" type="text" class="form-control" />
-                                    }
-                                    else
-                                    {
-                                        <input asp-for="OrderHeader.TrackingNumber" readonly type="text" class="form-control" />
-                                    }
-                                </div>
-                            </div>
+                           
                             <div class="row my-1">
                                 <div class="col-3">Ngày vận chuyển</div>
                                 <div class="col-9">
@@ -210,11 +198,11 @@
                                             <div class="col-8">
 
                                                 <h6 class="my-0 text-primary">@detail.Product.Title</h6>
-                                                <small class="text-muted">Giá  : @detail.Price.ToString("c")</small><br />
+                                                <small class="text-muted">Giá  : @detail.Price.ToString("c"+"0")</small><br />
                                                 <small class="text-muted">Số lượng : @detail.Count</small>
                                             </div>
                                             <div class="col-4 text-end">
-                                                <p class="text-success">@((detail.Count * detail.Price).ToString("c"))</p>
+                                                <p class="text-success">@((detail.Count * detail.Price).ToString("c" + "0"))</p>
                                             </div>
                                         </div>
                                     </li>
@@ -225,7 +213,7 @@
                                             <h5 class="text-white">Tổng </h5>
                                         </div>
                                         <div class="col-6 text-end">
-                                            <h5 class="text-white">@Model.OrderHeader.OrderTotal.ToString("c")</h5>
+                                            <h5 class="text-white">@Model.OrderHeader.OrderTotal.ToString("c"+"0")</h5>
                                         </div>
                                     </div>
                                 </li>
@@ -242,7 +230,7 @@
                                 {
                                     <button type="submit" asp-action="StartProcessing"
                                             class="btn btn-primary form-control my-1">
-                                        Bắt đầu xử lý
+                                        Đã gọi xác nhận đơn hàng
                                     </button>
                                 }
                                 @if (Model.OrderHeader.OrderStatus == SD.StatusInProcess)

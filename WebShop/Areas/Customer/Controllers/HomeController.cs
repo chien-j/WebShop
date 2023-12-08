@@ -25,26 +25,69 @@ namespace WebShop.Areas.Customer.Controllers
 
         }
 
-        public IActionResult Index(string searchString, int categoryId)
+        //public IActionResult Index()
+        //{
+
+        //    IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
+        //    return View(productList);
+        //}
+
+
+        //public IActionResult Index(string searchTerm)
+        //{
+        //    IEnumerable<Product> productList;
+
+        //    if (!string.IsNullOrEmpty(searchTerm))
+        //    {
+        //        // Tìm kiếm sản phẩm dựa trên điều kiện
+        //        productList = _unitofwork.Product.GetAll(
+        //            filter: p => p.Title.Contains(searchTerm),
+        //            includeProperties: "Category,ProductImages"
+        //        );
+        //    }
+        //    else
+        //    {
+        //        // Lấy tất cả sản phẩm nếu không có điều kiện tìm kiếm
+        //        productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
+        //    }
+
+        //    var groupedProducts = productList.GroupBy(p => p.Category).ToList();
+
+        //    return View(groupedProducts);
+        //}
+
+
+        public IActionResult Index(string searchTerm, int? categoryId)
         {
-            //ViewBag.Categories = _unitofwork.Category.GetAll(); // Điều này giả sử bạn có một phương thức GetAll trong repository Category
+            IEnumerable<Product> productList;
 
-            //IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category, ProductImages");
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Search with a specific category if selected
+                productList = _unitofwork.Product.GetAll(
+                    filter: p => p.Title.Contains(searchTerm) &&
+                                 (!categoryId.HasValue || p.CategoryId == categoryId.Value),
+                    includeProperties: "Category,ProductImages"
+                );
+            }
+            else if (categoryId.HasValue)
+            {
+                // Display products from a specific category
+                productList = _unitofwork.Product.GetAll(
+                    filter: p => p.CategoryId == categoryId.Value,
+                    includeProperties: "Category,ProductImages"
+                );
+            }
+            else
+            {
+                // Display all products if neither search term nor category is specified
+                productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
+            }
 
-            //Nếu có chuỗi tìm kiếm, lọc danh sách sản phẩm.
-            //if (!string.IsNullOrEmpty(searchString))
-            //{
-            //    productList = productList.Where(p => p.Title.ToLower().Contains(searchString));
-            //}
-            //if (categoryId != 0)
-            //{
-            //    productList = productList.Where(p => p.CategoryId == categoryId);
-            //}
-            IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
-            return View(productList);
+            var groupedProducts = productList.GroupBy(p => p.Category).ToList();
+
+            return View(groupedProducts);
         }
-
-
 
 
         public IActionResult Details(int productId)

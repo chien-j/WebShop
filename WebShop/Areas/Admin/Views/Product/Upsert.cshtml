@@ -30,36 +30,19 @@
                         <textarea asp-for="@Model.Product.Description" type="text" class="form-control"></textarea>
                     </div>
                     <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.ISBN" class="p-2"></label>
-                        <input asp-for="@Model.Product.ISBN" type="text" class="form-control" />
-                        <span asp-validation-for="@Model.Product.ISBN" class="text-danger"></span>
+                        <label asp-for="@Model.Product.Size" class="p-2"></label>
+                        <input asp-for="@Model.Product.Size" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.Product.Size" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.Author" class="p-2"></label>
-                        <input asp-for="@Model.Product.Author" type="text" class="form-control" />
-                        <span asp-validation-for="@Model.Product.Author" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.ListPrice" class="p-2"></label>
-                        <input asp-for="@Model.Product.ListPrice" type="text" class="form-control" />
-                        <span asp-validation-for="@Model.Product.ListPrice" class="text-danger"></span>
-                    </div>
+                   
+                    
                     <div class="mb-3 row p-1">
                         <label asp-for="@Model.Product.Price" class="p-2"></label>
                         <input asp-for="@Model.Product.Price" type="text" class="form-control" />
                         <span asp-validation-for="@Model.Product.Price" class="text-danger"></span>
                     </div>
-                    <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.Price50" class="p-2"></label>
-                        <input asp-for="@Model.Product.Price50" type="text" class="form-control" />
-                        <span asp-validation-for="@Model.Product.Price50" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.Price100" class="p-2"></label>
-                        <input asp-for="@Model.Product.Price100" type="text" class="form-control" />
-                        <span asp-validation-for="@Model.Product.Price100" class="text-danger"></span>
-                    </div>
+                    
                     <div class="mb-3 row p-1 form-floating">
                         <input type="file" name="files" class="form-control border-0 shadow" multiple />
                         <label asp-for="Product.ProductImages" class="ms-2"></label>

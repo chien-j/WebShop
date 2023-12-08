@@ -1,88 +1,120 @@
-﻿@model IEnumerable<Product>
-<div class="row pb-3">
-    <div class="col-lg-6 col-sm-12">
-        <form method="get" action="@Url.Action("Index", "Home")">
-            <div class="form-group">
-                <label for="categoryId">Chọn danh mục:</label>
-                @* <select class="form-control" id="categoryId" name="categoryId">
-                    <option value="">-- Tất cả --</option>
-                    @foreach (var category in ViewBag.Categories)
-                    {
-                        <option value="@category.Id">@category.Name</option>
-                    }
-                </select> *@
-            </div>
-        </form>
-        
+﻿
+
+
+@model List<IGrouping<Category, Product>>
+<form method="get" action="@Url.Action("Index")" id="filterForm">
+    <div class="input-group mb-3">
+        <select class="form-select" name="categoryId" id="categoryId">
+            <option value="">Tất cả danh mục</option>
+            @foreach (var categoryGroup in Model)
+            {
+                <option value="@categoryGroup.Key.Id">@categoryGroup.Key.Name</option>
+            }
+        </select>
     </div>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="searchTerm">
+        <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+    </div>
+</form>
+
+
+<div class="input-group">
+
+    <a class="nav-link active " asp-area="Customer" asp-controller="Home" asp-action="Index">Tất cả</a>
 </div>
-<div class="row pb-3">
-    @foreach(var product in Model)
-    {
-        <div class=" col-lg-3 col-sm-6">
+@foreach (var group in Model)
+{
+    <div class="mb-3" style="margin: 25px 0">
+        <h3>@group.Key.Name</h3>
+        <div class="row pb-3">
+            @foreach (var product in group)
+            {
+                <div class=" col-lg-3 col-sm-6">
 
-            <div class="row p-2">
-                <div class="col-12 p-1">
-                    <div class="card border-0 shadow border-top border-5 rounded" style="height:550px;">
+                    <div class="row p-2">
+                        <div class="col-12 p-1">
+                            <div class="card border-0 shadow border-top border-5 rounded" style="height:500px;">
 
-
-
-                        
-                        <div class="card-body pb-0">
-                            <div class="pl-1">
-                                @if (product.ProductImages != null && product.ProductImages.Count() > 0)
-                                {
-                                    <img src="@product.ProductImages.FirstOrDefault().ImageUrl" class="card-img-top rounded" style="
-                                 height: 260px; />
+                                <div class="card-body pb-0">
+                                    <div class="pl-1">
+                                        @if (product.ProductImages != null && product.ProductImages.Count() > 0)
+                                        {
+                                            <img src="@product.ProductImages.FirstOrDefault().ImageUrl" class="card-img-top rounded" style="
+                                     height: 260px; />
                                 }
                                 else
                                 {
-                                    <img src="https://placehold.co/500x600/png" class="card-img-top rounded" />
-                                }
+                                <img src="https://placehold.co/500x600/png" class="card-img-top rounded" />
+                                        }
 
+                                    </div>
+                                    <div class="pl-1" style="margin: 25px;">
+                                        <p  class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Title</p>
+
+                                    </div>
+                                    <div class="pl-1">
+
+                                        <p class="text-dark text-opacity-75 text-center mb-0">
+                                            Kích cỡ:
+                                            <span class="text-decoration-black font-weight-bold">
+                                                @product.Size
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="pl-1">
+                                        <p class="text-danger text-opacity-75 text-center" style="font-size: 20.5px;">
+                                            Giá bán:
+                                            <span>
+                                                @product.Price.ToString("c"+"0")
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="pl-1" style="margin: 25px;">
-                                <p style="height:50px;" class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Title</p>
-                                
-                            </div>
-                            <div class="pl-1">
-                              
-                                <p class="text-dark text-opacity-75 text-center mb-0">
-                                   Size bánh:
-                                    <span class="text-decoration-black font-weight-bold">
-                                        @product.ISBN
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="pl-1">
-                                <p class="text-danger text-opacity-75 text-center" style="font-size: 20.5px;">
-                                    Giá đang được bán:
-                                    <span>
-                                        @product.Price100.ToString("c"+"0")
-                                    </span>
-                                </p>
+                            <div>
+                                <a asp-action="Details"
+                                   asp-route-productId="@product.Id"
+                                   class="btn  bg-gradient border-0 form-control" style=" background:#FFADCD;">
+                                    Chi Tiết
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <a asp-action="Details"
-                           asp-route-productId="@product.Id"
-                           class="btn btn-primary bg-gradient border-0 form-control">
-                            Chi Tiết
-                        </a>
-                    </div>
                 </div>
+            }
+        </div>
+    </div>
+}
+
+<div class="pl-1">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/bgrcake/wepik-abstract-hand-drawn-sweet-recipes-all-day-youtube-banner-20231208112836ajkz.png" class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="~/bgrcake/1.png" class="d-block w-100" />
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/bgrcake/wepik-white-and-red-christmas-card-20231208152514s86s.png" />
             </div>
         </div>
-    }
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
 </div>
-
-
-@section Scripts{
+@section Scripts {
     <script>
-        // Thêm sự kiện onchange cho dropdown list để tự động gửi yêu cầu khi giá trị thay đổi
         document.getElementById('categoryId').addEventListener('change', function () {
-            this.form.submit(); // Gửi yêu cầu khi giá trị thay đổi
+            document.getElementById('filterForm').submit();
         });
     </script>
 }

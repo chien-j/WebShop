@@ -7,11 +7,11 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a id="manage" class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Xin chào @UserManager.GetUserName(User)!</a>
+            <a id="manage" class="nav-link " asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="color: #000;">Xin chào @UserManager.GetUserName(User)!</a>
     </li>
     <li class="nav-item">
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit" class="nav-link btn btn-link  border-0">Đăng xuất</button>
+                <button id="logout" type="submit" class="nav-link btn btn-link  border-0" style="color: #000;">Đăng xuất</button>
         </form>
     </li>
 
@@ -20,10 +20,10 @@
 else
 {
     <li class="nav-item">
-        <a class="nav-link " id="register" asp-area="Identity" asp-page="/Account/Register">Đăng ký</a>
+            <a class="nav-link " id="register" asp-area="Identity" asp-page="/Account/Register" style="color: #000;">Đăng ký</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Đăng Nhập</a>
+            <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login" style="color: #000;">Đăng Nhập</a>
     </li>
 }
 </ul>

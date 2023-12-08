@@ -59,10 +59,7 @@ namespace WebShop.Areas.Admin.Controllers
             {
                 orderHeaderFromDb.Carrier = OrderVM.OrderHeader.Carrier;
             }
-            if (!string.IsNullOrEmpty(OrderVM.OrderHeader.TrackingNumber))
-            {
-                orderHeaderFromDb.Carrier = OrderVM.OrderHeader.TrackingNumber;
-            }
+           
             _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
             _unitOfWork.Save();
 
@@ -88,7 +85,7 @@ namespace WebShop.Areas.Admin.Controllers
         {
 
             var orderHeader = _unitOfWork.OrderHeader.Get(u => u.Id == OrderVM.OrderHeader.Id);
-            orderHeader.TrackingNumber = OrderVM.OrderHeader.TrackingNumber;
+            
             orderHeader.Carrier = OrderVM.OrderHeader.Carrier;
             orderHeader.OrderStatus = SD.StatusShipped;
             orderHeader.ShippingDate = DateTime.Now;

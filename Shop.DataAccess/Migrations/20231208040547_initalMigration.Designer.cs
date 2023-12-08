@@ -12,7 +12,7 @@ using WebShop.Data;
 namespace Shop.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231203123630_initalMigration")]
+    [Migration("20231208040547_initalMigration")]
     partial class initalMigration
     {
         /// <inheritdoc />
@@ -261,38 +261,6 @@ namespace Shop.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            City = "Tech City",
-                            Name = "Tech Solution",
-                            PhoneNumber = "6669990000",
-                            PostalCode = "12121",
-                            State = "IL",
-                            StreetAddress = "123 Tech St"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            City = "Vid City",
-                            Name = "Vivid Books",
-                            PhoneNumber = "7779990000",
-                            PostalCode = "66666",
-                            State = "IL",
-                            StreetAddress = "999 Vid St"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            City = "Lala land",
-                            Name = "Readers Club",
-                            PhoneNumber = "1113335555",
-                            PostalCode = "99999",
-                            State = "NY",
-                            StreetAddress = "999 Main St"
-                        });
                 });
 
             modelBuilder.Entity("Shop.Models.Models.OrderDetail", b =>
@@ -388,9 +356,6 @@ namespace Shop.DataAccess.Migrations
 
                     b.Property<string>("StreetAddress")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TrackingNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -523,10 +488,6 @@ namespace Shop.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -534,21 +495,12 @@ namespace Shop.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ISBN")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ListPrice")
-                        .HasColumnType("float");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<double>("Price100")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Price50")
-                        .HasColumnType("float");
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -564,80 +516,11 @@ namespace Shop.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            Author = "Chang",
                             CategoryId = 1,
-                            Description = "Bánh su kem là một trong những loại bánh ngọt vô cùng quen thuộc đối với người dân Việt Nam. \\r\\n\\r\\Bánh su kem là một loại bánh ngọt tráng miệng hấp dẫn khi mới ngửi hương vị giòn tan của bánh thôi thì bạn cũng đã đủ thấy thèm.. ",
-                            ISBN = "SWD9999001",
-                            ListPrice = 99.0,
-                            Price = 90.0,
-                            Price100 = 80.0,
-                            Price50 = 85.0,
-                            Title = "Bánh su kem"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Author = "NChang",
-                            CategoryId = 1,
-                            Description = "Điều đặc biệt bên trong của chiếc bánh nhỏ nhỏ xinh xắn này chính là lớp kem tươi, mứt hoặc trái cây.\\r\\n\\r\\ Lớp bánh mềm xốp bên dưới hòa quyện với độ ngọt của mứt bên trên tạo ra một loại bánh không thể nào chối từ.. ",
-                            ISBN = "CAW777777701",
-                            ListPrice = 40.0,
-                            Price = 30.0,
-                            Price100 = 20.0,
-                            Price50 = 25.0,
-                            Title = "Bánh Cupcake"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Author = "JChang",
-                            CategoryId = 2,
-                            Description = "Bánh rán Dorayaki gắn liền với một bộ phim hoạt hình mà tuổi thơ ai cũng đã từng xem qua đó chính là hoạt hình Doraemon. \\r\\n\\r\\Nếu bạn yêu thích chú mèo máy Doraemon thì bạn sẽ nhớ ngay là chú rất yêu món bánh này, mê đến nỗi phát cuồng lên.. ",
-                            ISBN = "RITO5555501",
-                            ListPrice = 55.0,
-                            Price = 50.0,
-                            Price100 = 35.0,
-                            Price50 = 40.0,
-                            Title = "Bánh rán Dorayaki"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Author = "AChang",
-                            CategoryId = 2,
-                            Description = "Được nhiều người biết đến với tên gọi khác là “bánh mì nhanh”.\\r\\n\\r\\ Mới nhìn lần đầu, người ăn sẽ khó phân biệt bánh Muffin với bánh cupcake hai loại bánh này khá giống nhau ở kích thước và hình dáng bên ngoài. Tuy nhiên, Bách hóa XANH gợi ý cho bạn cách phân biệt 2 món bánh ngon này nhé!. ",
-                            ISBN = "WS3333333301",
-                            ListPrice = 70.0,
-                            Price = 65.0,
-                            Price100 = 55.0,
-                            Price50 = 60.0,
-                            Title = "Bánh Muffin"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Author = "RChang",
-                            CategoryId = 3,
-                            Description = "Hay còn được gọi là bánh “kếp tầng”. Nguyên liệu chính để làm nên chiếc bánh đó chính là bột, \\r\\n\\r\\trứng, sữa và bơ được nướng hoặc rán trên chảo.. ",
-                            ISBN = "SOTJ1111111101",
-                            ListPrice = 30.0,
-                            Price = 27.0,
-                            Price100 = 20.0,
-                            Price50 = 25.0,
-                            Title = "Bánh Pancake"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Author = "LChang",
-                            CategoryId = 3,
-                            Description = "Một trong những loại bánh “sốt sồn sột” nhất hiện nay chính là bánh Tiramisu. Có nguồn gốc từ món bánh ngọt\\r\\n\\r\\ tráng miệng vị cà phê rất nổi tiếng của nước Ý mà ai cũng biết nên khi bắt đầu được du nhập vào Việt Nam đã chinh phục trái tim của người thưởng thức.. ",
-                            ISBN = "FOT000000001",
-                            ListPrice = 25.0,
-                            Price = 23.0,
-                            Price100 = 20.0,
-                            Price50 = 22.0,
-                            Title = "Bánh Tiramisu"
+                            Description = "Bánh sinh nhật cổ điển là một trong những loại bánh ngọt vô cùng quen thuộc đối với người dân Việt Nam. ",
+                            Price = 90000.0,
+                            Size = "S",
+                            Title = "Bánh sinh nhật cổ điển"
                         });
                 });
 

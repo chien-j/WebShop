@@ -16,8 +16,8 @@ namespace Shop.Utility
 
 
         public const string StatusPending = "Đang chờ xử lý";
-        public const string StatusApproved = "Đang xử lý";
-        public const string StatusInProcess = "Đã phê duyệt - đóng gói sản phẩm";
+        public const string StatusApproved = "Đang xử lý - gọi xác nhận";
+        public const string StatusInProcess = "Đã xác nhận - đóng gói sản phẩm";
         public const string StatusShipped = "Đã giao hàng";
         public const string StatusCancelled = "Đã hủy";
         public const string StatusRefunded = "Đã hoàn tiền";
