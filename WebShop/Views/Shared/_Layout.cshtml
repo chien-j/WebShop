@@ -103,11 +103,11 @@
         <main role="main" class="pb-3" style="margin-top:150px;">
             <marquee direction="left">
                 <h3 style=" color:#f24689;text-align: center;">Kính chào quý khác đến với PiuPiu Cake.Chúc quý khách ngon miệng.<i style=" color:red;" class="bi bi-arrow-through-heart-fill"></i> </h3><br />
-                <h3 style=" color:#f24689;text-align: center;"> Bánh của chúng tôi luôn ngon, không ngon do bạn.<i style=" color:red;" class="bi bi-arrow-through-heart-fill"></i> </h3>
+                <h3 style=" color:#f24689;text-align: center;"> <i style=" color:red;" class="bi bi-cart-check-fill"></i> Bánh của chúng tôi luôn ngon, không ngon do bạn.<i style=" color:red;" class="bi bi-cart-check-fill"></i> </h3>
                 
             </marquee>
             <marquee direction="right">
-                <h3 style=" color:#f24689;">Hotline- Zalo: 0912-999-999 </h3><br />
+                <h3 style=" color:#f24689;"><i style=" color:red;" class="bi bi-star-fill"></i>Hotline- Zalo: 0912-999-999 <i style=" color:red;" class="bi bi-star-fill"> </h3><br />
                 
             </marquee>
             <partial name="_Notification" />
@@ -251,15 +251,21 @@
     <!-- SweetAlert2 Notification Script -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            Swal.fire({
-                title: 'Kính chào quý khác! ',
-                html: 'Quý khách vui lòng: <br> Đặt bánh  và liên hệ tiệm trước 6 - 8 tiếng đối với bánh thường.<br> 3-5 ngày đối với fondant tạo hình để đặt hàng ạ!!!!',
-                icon: 'success',
-                confirmButtonColor: '#28a745',
-                confirmButtonText: 'Cảm ơn quý khách!'
-            });
+            // Kiểm tra xem bạn có ở trang chủ hay không
+            if (window.location.pathname === '/') {
+                // Nếu ở trang chủ, hiển thị thông báo
+                Swal.fire({
+                    title: 'Kính chào quý khách!',
+                    html: 'Quý khách vui lòng: <br> Đặt bánh  và liên hệ tiệm trước 6 - 8 tiếng đối với bánh thường.<br> 3-5 ngày đối với fondant tạo hình để đặt hàng ạ!!!!',
+                    icon: 'success',
+                    confirmButtonColor: '#28a745',
+                    confirmButtonText: 'Cảm ơn quý khách!'
+                });
+            }
         });
     </script>
+
+
 
 </body>
 </html>
