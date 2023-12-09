@@ -1,6 +1,7 @@
 ﻿
 using Shop.DataAccess.Repository.IRepository;
 using Shop.Models;
+using Shop.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,9 @@ namespace Shop.DataAccess.Repository
         public IOrderDetailRepository OrderDetail { get; private set; }
         public IProductImageRepository ProductImage { get; private set; }
         public IProductSizeRepository ProductSize { get; private set; }
+        public INewsRepository News { get; private set; }
 
-
+        
 
 
         public UnitOfWork(ApplicationDbContext db)
@@ -39,7 +41,8 @@ namespace Shop.DataAccess.Repository
             OrderHeader = new OrderHeaderRepository(_db);
             ProductImage = new ProductImageRepository(_db);
             ProductSize = new ProductSizeRepository(_db);
-
+            News = new NewsRepository(_db);
+            
         }
 
         public void Save()

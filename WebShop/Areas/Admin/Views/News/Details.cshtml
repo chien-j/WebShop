@@ -1,0 +1,44 @@
+﻿@model News
+
+<h2>News Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/images/@Model.ImageFile" alt="Image" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description_01)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description_01)
+        </dd>
+        <dt class="col-sm-2">
+            Image_01
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/images/@Model.ImageFile_01" alt="Image" />
+        </dd>
+    </dl>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>

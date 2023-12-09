@@ -12,11 +12,11 @@ namespace WebShop.Models
         public int Id { get; set; }
         [Required]
 
-        [Display(Name = "Tên Bánh")]
+        [Display(Name = "Tên Bánh - Sản phẩm")]
         public string ?Title { get; set; }
 
         [Required]
-        [Display(Name = "Size Bánh")]
+        [Display(Name = "Size Bánh - Trọng lượng")]
         public string ?Size { get; set; }
 
        

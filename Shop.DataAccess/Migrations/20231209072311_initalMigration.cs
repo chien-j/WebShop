@@ -60,6 +60,23 @@ namespace Shop.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "newss",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageFile = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description_01 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageFile_01 = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_newss", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -473,6 +490,9 @@ namespace Shop.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "newss");
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");

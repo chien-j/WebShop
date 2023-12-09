@@ -25,6 +25,7 @@ namespace WebShop.Data
 
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
+        public DbSet<News> newss { get; set; }
 
 
 
