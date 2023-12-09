@@ -27,7 +27,7 @@
                         @if (Model.Product.ProductImages != null && Model.Product.ProductImages.Count > 0)
                         {
                             <div id="carouselExampleIndicators" style="width: 453px;" class="carousel  slide" data-bs-ride="carousel">
-                                <div class="carousel-indicators">
+                                <div class="carousel-indicators" >
 
                                     @foreach (var imageWithIndex in
                                    Model.Product.ProductImages
@@ -39,7 +39,7 @@
 
 
                                 </div>
-                                <div class="carousel-inner">
+                                <div class="carousel-inner" style="height:500px;">
                                     @foreach (var imageWithIndex in
                                    Model.Product.ProductImages
                                    .Select((image, index) => new { Image = image, Index = index }))

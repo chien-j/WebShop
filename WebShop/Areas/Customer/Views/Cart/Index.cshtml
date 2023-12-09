@@ -49,11 +49,11 @@
                     @foreach(var item in Model.ShoppingCartList)
                     {
                         <div class="row border-bottom pb-3">
-                            <div class="d-none d-lg-block col-lg-1 text-center py-2">
+                            <div class="d-none d-lg-block col-lg-1 text-center py-2" >
                                 <div class="pl-1">
                                     @if (item.Product.ProductImages != null && item.Product.ProductImages.Count() > 0)
                                     {
-                                        <img src="@item.Product.ProductImages.FirstOrDefault().ImageUrl" class="card-img-top rounded w-100" />
+                                        <img style="height:600px;" src="@item.Product.ProductImages.FirstOrDefault().ImageUrl" class="card-img-top rounded w-100" />
                                     }
                                     else
                                     {
