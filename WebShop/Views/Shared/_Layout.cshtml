@@ -24,90 +24,286 @@
 
 
 </head>
-<body>
+<body style="margin:0">
     <header>
-      
+        <ul class="list-group">
+            <li class="list-group-item" style="padding:0;border:none;">
+                <nav class="navbar navbar-expand-lg  " style="height:50px; background:#f8f8f8;" data-bs-theme="white">
+                    <div class="container-fluid">
+                        <a class="nav-link" style="font-size:12px;" asp-area="" asp-controller="Home" asp-action="Index">
 
-        <nav class="navbar navbar-expand-lg fixed-top " style="height:88px; background:#FFADCD;" data-bs-theme="white">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Piu Piu Cake</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse " id="navbarColor01">
-                    <ul class="navbar-nav flex-row" style="margin-left: 41.8rem;">
-                        <li class="nav-item">
-                           
-                            <a class="nav-link active " asp-area="Customer" asp-controller="Home" asp-action="Index">Trang chủ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  " asp-area="Customer" asp-controller="Cart" asp-action="Index" style="color: #000;">
-                                @await Component.InvokeAsync("ShoppingCart")
-                            </a>
-                        </li>
-                        @* <li class="nav-item">
-                            <form method="get" action="@Url.Action("Index")">
-                                <select class="form-select" name="categoryId" id="categoryId" style="background-color: #1a1a1a;color: #fff;">
-                                    <option value="">Tất cả danh mục</option>
-                                    @foreach (var category in ViewBag.Categories)
+                            Shop bánh kem, hoa tươi và các loại quà tặng sinh nhật
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse " id="navbarColor01">
+                            <ul class="navbar-nav flex-row" style="margin-left: 47.8rem;">
+
+                                <li class="nav-item">
+                                    <ul class="navbar-nav me-auto">
+
+                                        <li class="nav-item">
+
+                                            <a class="nav-link active " asp-area="Customer" asp-controller="News" asp-action="Create">Đăng ký tư vấn </a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="navbar-nav me-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000;">
+                                                Chính sách
+                                            </a>
+                                            <ul class="dropdown-menu">
+
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Chinh_Sach_BaoMat">Chính sách bảo mật</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Chinh_Sach_GiaoHang">Chính sách giao hàng</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Chinh_Sach_XuLyKN">Chính sách xử lý khiếu nại</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Chinh_Sach_DoiTra">Chính sách đổi trả</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <ul class="navbar-nav me-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000;">
+                                                HƯỡng dẫn
+                                            </a>
+                                            <ul class="dropdown-menu">
+
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Huong_dan_BaoQuan">Hướng dẫn bảo quản</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Huong_dan_Muabanh">Hướng dẫn mua bánh</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Huong_dan_ThanhToan">Hướng dẫn thanh toán</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Huong_dan_KHDN">Khách hàng doanh nghiệp</a></li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </nav>
+            </li>
+            <li class="list-group-item" style="padding:0;border:none;">
+                <nav class="navbar navbar-expand-lg " style="height:70px; background:#FFADCD;" data-bs-theme="white">
+
+                    <div class="container-fluid">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Piu Piu Cake</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse " id="navbarColor01">
+                            <ul class="navbar-nav flex-row" style="margin-left: 30.8rem;">
+                                <li class="nav-item">
+
+                                    <a class="nav-link active " asp-area="Customer" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                                </li>
+                                <li class="nav-item">
+
+                                    <a class="nav-link active " asp-area="Customer" asp-controller="News" asp-action="Gioi_thieu">Giới Thiệu </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link  " asp-area="Customer" asp-controller="Cart" asp-action="Index" style="color: #000;">
+                                        @await Component.InvokeAsync("ShoppingCart")
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee) || User.IsInRole(SD.Role_Customer))
                                     {
-                                        <option value="@category.Id">@category.Name</option>
-
+                                        <div class="nav-item">
+                                            <a class=" nav-link  " asp-area="Admin" asp-controller="Order" asp-action="Index" style="color: #000;">Đơn Hàng</a>
+                                        </div>
                                     }
-                                </select>
-                            </form>
-                        </li> *@
-                        <li class="nav-item">
-                            @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee) || User.IsInRole(SD.Role_Customer))
-                            {
-                                <div class="nav-item">
-                                    <a class=" nav-link  " asp-area="Admin" asp-controller="Order" asp-action="Index" style="color: #000;">Đơn Hàng</a>
-                                </div>
-                            }
-                        </li>
-                      
+                                </li>
 
-                        <li class="nav-item">
-                            @if (User.IsInRole(SD.Role_Admin))
-                            {
+                                <li class="nav-item">
+                                    @if (User.IsInRole(SD.Role_Admin))
+                                    {
+                                        <ul class="navbar-nav me-auto">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000;">
+                                                    Quản Lý
+                                                </a>
+                                                <ul class="dropdown-menu">
+
+                                                    <li><a class=" dropdown-item nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Tạo người dùng</a></li>
+                                                    <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">tài khoản người dùng</a></li>
+                                                    <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Category" asp-action="Index">Danh mục</a></li>
+                                                    <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Product" asp-action="Index">Sản phẩm</a></li>
+                                                    <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Index">Đơn Đăng Ký Tư Vấn</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    }
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="collapse navbar-collapse " id="navbarColor01">
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
+                </nav>
+            </li>
+        </ul>
+       @* 
+
+       <div>
+            <nav class="navbar navbar-expand-lg  " style="height:50px; background:#ccc;margin-top:70px;" data-bs-theme="white">
+                <div class="container-fluid">
+                    <a class="nav-link" style="font-size:12px;" asp-area="" asp-controller="Home" asp-action="Index">
+                        
+                        Shop bánh kem, hoa tươi và các loại quà tặng sinh nhật
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarColor01">
+                        <ul class="navbar-nav flex-row" style="margin-left: 47.8rem;">
+
+                            <li class="nav-item">
+                                <ul class="navbar-nav me-auto">
+                                   
+                                    <li class="nav-item">
+
+                                        <a class="nav-link active " asp-area="Customer" asp-controller="News" asp-action="Create">Đăng ký tư vấn </a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
+                            <li class="nav-item">
                                 <ul class="navbar-nav me-auto">
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000;">
-                                            Quản Lý
+                                            Chính sách
                                         </a>
                                         <ul class="dropdown-menu">
 
-                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Identity" asp-page="/Account/Register" >Tạo người dùng</a></li>
-                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">tài khoản người dùng</a></li>
-                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Category" asp-action="Index">Danh mục</a></li>
-                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Product" asp-action="Index">Sản phẩm</a></li>
-                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="News" asp-action="Index">News</a></li>
+                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Chinh_Sach_BaoMat">Chính sách bảo mật</a></li>
+                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Chinh_Sach_GiaoHang">Chính sách giao hàng</a></li>
+                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Chinh_Sach_XuLyKN">Chính sách xử lý khiếu nại</a></li>
+                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Chinh_Sach_DoiTra">Chính sách đổi trả</a></li>
                                         </ul>
                                     </li>
                                 </ul>
-                            }
-                        </li>
+                            </li>
+                            <li class="nav-item">
+                                <ul class="navbar-nav me-auto">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000;">
+                                            HƯỡng dẫn
+                                        </a>
+                                        <ul class="dropdown-menu">
 
-                        <li class="nav-item" >
-                            <partial name="_LoginPartial" />
-                        </li>
-                    </ul>
+                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Huong_dan_BaoQuan">Hướng dẫn bảo quản</a></li>
+                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Huong_dan_Muabanh">Hướng dẫn mua bánh</a></li>
+                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Huong_dan_ThanhToan">Hướng dẫn thanh toán</a></li>
+                                            <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Huong_dan_KHDN">Khách hàng doanh nghiệp</a></li>
+                                            
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
 
+
+
+                        </ul>
+
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </div>
 
+        <div> 
+            <nav class="navbar navbar-expand-lg fixed-top " style="height:70px; background:#FFADCD;" data-bs-theme="white">
+
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Piu Piu Cake</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarColor01">
+                        <ul class="navbar-nav flex-row" style="margin-left: 39.8rem;">
+                            <li class="nav-item">
+
+                                <a class="nav-link active " asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link active " asp-area="Customer" asp-controller="News" asp-action="Gioi_thieu">Giới Thiệu </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " asp-area="Customer" asp-controller="Cart" asp-action="Index" style="color: #000;">
+                                    @await Component.InvokeAsync("ShoppingCart")
+                                </a>
+                            </li>
+                           
+                            <li class="nav-item">
+                                @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee) || User.IsInRole(SD.Role_Customer))
+                                {
+                                    <div class="nav-item">
+                                        <a class=" nav-link  " asp-area="Admin" asp-controller="Order" asp-action="Index" style="color: #000;">Đơn Hàng</a>
+                                    </div>
+                                }
+                            </li>
+                            
+                            <li class="nav-item">
+                                @if (User.IsInRole(SD.Role_Admin))
+                                {
+                                    <ul class="navbar-nav me-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #000;">
+                                                Quản Lý
+                                            </a>
+                                            <ul class="dropdown-menu">
+
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Tạo người dùng</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">tài khoản người dùng</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Category" asp-action="Index">Danh mục</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Admin" asp-controller="Product" asp-action="Index">Sản phẩm</a></li>
+                                                <li><a class=" dropdown-item nav-link text-dark" asp-area="Customer" asp-controller="News" asp-action="Index">Đặt hàng</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                }
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="collapse navbar-collapse " id="navbarColor01">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+
+        </div> 
+        
+        *@
+      
+
+
+        
+    </header>
+    
     <div class="container">
        
-        <main role="main" class="pb-3" style="margin-top:150px;">
-            <marquee direction="left">
-                <h3 style=" color:#f24689;text-align: center;">Kính chào quý khác đến với PiuPiu Cake.Chúc quý khách ngon miệng.<i style=" color:red;" class="bi bi-arrow-through-heart-fill"></i> </h3><br />
-                <h3 style=" color:#f24689;text-align: center;"> <i style=" color:red;" class="bi bi-cart-check-fill"></i> Bánh của chúng tôi luôn ngon, không ngon do bạn.<i style=" color:red;" class="bi bi-cart-check-fill"></i> </h3>
+        <main role="main" class="pb-3" style="margin-top:50px;">
+            <marquee id="homeMarquee" direction="left" style="height: 20px;padding: 0px;margin: 0;">
+                <h3 style=" color:#f24689; height: 22px;font-size: 17px;">Kính chào quý khách đến với PiuPiu Cake.<i style=" color:red;" class="bi bi-arrow-through-heart-fill"></i> </h3><br />
+               
                 
             </marquee>
-            <marquee direction="right">
-                <h3 style=" color:#f24689;"><i style=" color:red;" class="bi bi-star-fill"></i>Hotline- Zalo: 0912-999-999 <i style=" color:red;" class="bi bi-star-fill"> </h3><br />
+            <marquee  id="homeMarquee" direction="right">
+                <h3 style=" color:#f24689;font-size: 17px;"><i class="bi bi-telephone-inbound-fill"></i>Hotline: 0912-999-999 (Thứ 2 - Chủ nhật: 9:00-20:00) </h3><br />
                 
             </marquee>
             <partial name="_Notification" />
@@ -121,33 +317,43 @@
     <!-- Footer -->
     <footer class="text-center text-lg-start  text-muted" style=" background:#FFADCD;">
         <!-- Section: Social media -->
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom bg-body-tertiary">
+        <section  class="d-flex justify-content-center justify-content-lg-between border-bottom bg-body-tertiary" >
             <!-- Left -->
+          
             <div class="me-5 d-none d-lg-block">
-                <span>Xin chào:</span>
+
+                <div class="g-col-3 g-start-2">
+                    <div class="d-inline p-2 " style="font-size: 57px;color:#dd0f71;"><i class="bi bi-flower1"></i></div>
+                    <div class="d-inline p-2  text-primary">
+                        <strong style="font-size: 1.8rem;line-height: 1.5;font-weight: 600;">Nguyên liệu cao cấp</strong>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+
+            <div class="me-5 d-none d-lg-block">
+
+                <div class="g-col-3 g-start-2">
+                    <div class="d-inline p-2 " style="font-size: 57px;color:#dd0f71;"> <i  class="bi bi-box2-heart-fill"></i></div>
+
+                    <div class="d-inline p-2 text-primary"> <strong style="font-size: 1.8rem;line-height: 1.5;font-weight: 600;"> Khách hàng tin dùng</strong>
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div class="me-5 d-none d-lg-block">
+                
+                <div class="g-col-3 g-start-2" >
+                    <div class="d-inline p-2 " style="font-size: 57px;color:#dd0f71;"> <i class="bi bi-bookmark-star"></i></div>
+
+                    <div class="d-inline p-2 text-primary"><strong style="font-size: 1.8rem;line-height: 1.5;font-weight: 600;">Giao hàng nhanh chóng</strong></div>
+                </div>
             </div>
             <!-- Left -->
-            <!-- Right -->
-            <div>
-                <a href="" class=" me-4 text-reset" style="text-decoration:none;">
-                    <i style=" color:#FFADCD;" class="bi bi-facebook"></i>
-                </a>
-                <a href="" class="me-4 text-reset text-decoration-none">
-                    <i style=" color:#FFADCD;" class="bi bi-tiktok"></i>
-                </a>
-                <a href="" class="me-4 text-reset text-decoration-none">
-                    <i style=" color:#FFADCD;" class="bi bi-google"></i>
-                </a>
-                <a href="" class="me-4 text-reset text-decoration-none">
-                    <i style=" color:#FFADCD;" class="fab fa-instagram"></i>
-                </a>
-                <a href="" class="me-4 text-reset text-decoration-none">
-                    <i style =" color:#FFADCD;" class="bi bi-instagram"></i>
-                </a>
-                <a href="" class="me-4 text-reset text-decoration-none">
-                    <i style=" color:#FFADCD;" class="bi bi-github"></i>
-                </a>
-            </div>
+           
             <!-- Right -->
         </section>
         <!-- Section: Social media -->
@@ -224,12 +430,7 @@
                 <!-- Grid row -->
             </div>
         </section>
-        <!-- Section: Links  -->
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2021 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
+       
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
@@ -249,7 +450,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script></script>
     @await RenderSectionAsync("Scripts",  required: false)
     <!-- SweetAlert2 Notification Script -->
-    <script>
+    @* <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Kiểm tra xem bạn có ở trang chủ hay không
             if (window.location.pathname === '/') {
@@ -262,8 +463,15 @@
                     confirmButtonText: 'Cảm ơn quý khách!'
                 });
             }
+
+            var isHomePage = window.location.pathname === '/';
+
+            if (isHomePage) {
+                // Nếu ở trang chủ, hiển thị thẻ <marquee>
+                document.getElementById("homeMarquee").style.display = "block";
+            }
         });
-    </script>
+    </script> *@
 
 
 

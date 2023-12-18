@@ -60,20 +60,19 @@ namespace Shop.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "newss",
+                name: "News",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageFile = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description_01 = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageFile_01 = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nummber = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_newss", x => x.Id);
+                    table.PrimaryKey("PK_News", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -378,9 +377,13 @@ namespace Shop.DataAccess.Migrations
                 columns: new[] { "Id", "DisplayOrder", "Name" },
                 values: new object[,]
                 {
-                    { 1, 1, "Bánh Ngọt" },
+                    { 1, 1, "Bánh Kem" },
                     { 2, 2, "Bánh sinh nhật" },
-                    { 3, 3, "bánh bông lan" }
+                    { 3, 4, "Bánh COOKIES" },
+                    { 4, 5, "Bánh BISCOTTI" },
+                    { 5, 6, "Bánh ECLAIR" },
+                    { 6, 7, "Set quà tết" },
+                    { 7, 8, "Bánh Hoa Decor" }
                 });
 
             migrationBuilder.InsertData(
@@ -492,7 +495,7 @@ namespace Shop.DataAccess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "newss");
+                name: "News");
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");

@@ -12,25 +12,20 @@ namespace Shop.Models.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Tiêu Đề")]
-        public string? Title { get; set; }
+        [Display(Name = "Họ tên")]
+        public string Name { get; set; }
 
-        [Display(Name = "Thông tin chi tiết")]
+        [Display(Name = "Email")]
         [Required]
-        public string? Description { get; set; }
+        public string Email { get; set; }
 
-        [Display(Name = "Hình ảnh")]
-        
-        public string ImageFile { get; set; }
-
-        [Display(Name = "Thông tin chi tiết")]
+        [Display(Name = "Số điện thoại")]
         [Required]
-        public string? Description_01 { get; set; }
+        public int Nummber { get; set; }
 
-        [Display(Name = "Hình ảnh 01")]
-        
-        public string ImageFile_01 { get; set; }
-
+        [Display(Name = "Yêu cầu của bạn")]
+        [Required]
+        public string  Description { get; set; }
 
     }
 }

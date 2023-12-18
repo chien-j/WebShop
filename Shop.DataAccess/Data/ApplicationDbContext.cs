@@ -26,16 +26,20 @@ namespace WebShop.Data
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
         public DbSet<News> newss { get; set; }
-
+        public DbSet<News> advise { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Bánh Ngọt", DisplayOrder = 1 },
-                new Category { Id = 2, Name = "Bánh sinh nhật", DisplayOrder = 2 },
-                new Category { Id = 3, Name = "bánh bông lan", DisplayOrder = 3 }
+                new Category { Id = 1, Name = "Bánh Kem", DisplayOrder = 1 },
+                new Category { Id = 2, Name = "Bánh sinh nhật", DisplayOrder = 2 }, 
+                new Category { Id = 3, Name = "Bánh COOKIES", DisplayOrder = 4 },
+                new Category { Id = 4, Name = "Bánh BISCOTTI", DisplayOrder = 5 },
+                new Category { Id = 5, Name = "Bánh ECLAIR", DisplayOrder = 6 },
+                new Category { Id = 6, Name = "Set quà tết", DisplayOrder = 7 },
+                new Category { Id = 7, Name = "Bánh Hoa Decor", DisplayOrder = 8 }
                 );
 
             

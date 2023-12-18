@@ -272,24 +272,20 @@ namespace Shop.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description_01")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageFile")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageFile_01")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Nummber")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("newss");
+                    b.ToTable("News");
                 });
 
             modelBuilder.Entity("Shop.Models.Models.OrderDetail", b =>
@@ -493,7 +489,7 @@ namespace Shop.DataAccess.Migrations
                         {
                             Id = 1,
                             DisplayOrder = 1,
-                            Name = "Bánh Ngọt"
+                            Name = "Bánh Kem"
                         },
                         new
                         {
@@ -504,8 +500,32 @@ namespace Shop.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            DisplayOrder = 3,
-                            Name = "bánh bông lan"
+                            DisplayOrder = 4,
+                            Name = "Bánh COOKIES"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DisplayOrder = 5,
+                            Name = "Bánh BISCOTTI"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DisplayOrder = 6,
+                            Name = "Bánh ECLAIR"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DisplayOrder = 7,
+                            Name = "Set quà tết"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DisplayOrder = 8,
+                            Name = "Bánh Hoa Decor"
                         });
                 });
 
