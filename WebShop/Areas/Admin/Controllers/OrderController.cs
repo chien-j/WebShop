@@ -52,7 +52,7 @@ namespace WebShop.Areas.Admin.Controllers
             orderHeaderFromDb.PhoneNumber = OrderVM.OrderHeader.PhoneNumber;
             orderHeaderFromDb.StreetAddress = OrderVM.OrderHeader.StreetAddress;
             orderHeaderFromDb.City = OrderVM.OrderHeader.City;
-            orderHeaderFromDb.State = OrderVM.OrderHeader.State;
+            orderHeaderFromDb.State = "SS.";
             orderHeaderFromDb.PostalCode = OrderVM.OrderHeader.PostalCode;
 
             if (!string.IsNullOrEmpty(OrderVM.OrderHeader.Carrier))
