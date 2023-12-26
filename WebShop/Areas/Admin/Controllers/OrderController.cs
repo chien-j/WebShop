@@ -13,6 +13,7 @@ using WebShop.Models;
 namespace WebShop.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class OrderController : Controller
 	{
 		private readonly IUnitOfWork _unitOfWork;
@@ -31,7 +32,13 @@ namespace WebShop.Areas.Admin.Controllers
             return View();
 
         }
+        public IActionResult treeChart()
+        {
 
+
+            return View();
+
+        }
         public IActionResult Details(int orderId)
         {
             OrderVM = new()
@@ -52,21 +59,24 @@ namespace WebShop.Areas.Admin.Controllers
             orderHeaderFromDb.PhoneNumber = OrderVM.OrderHeader.PhoneNumber;
             orderHeaderFromDb.StreetAddress = OrderVM.OrderHeader.StreetAddress;
             orderHeaderFromDb.City = OrderVM.OrderHeader.City;
-            orderHeaderFromDb.State = OrderVM.OrderHeader.State;
+            orderHeaderFromDb.State = "SS";
             orderHeaderFromDb.PostalCode = OrderVM.OrderHeader.PostalCode;
 
             if (!string.IsNullOrEmpty(OrderVM.OrderHeader.Carrier))
             {
                 orderHeaderFromDb.Carrier = OrderVM.OrderHeader.Carrier;
             }
-           
+            
+
             _unitOfWork.OrderHeader.Update(orderHeaderFromDb);
             _unitOfWork.Save();
 
             TempData["Success"] = "Chi tiết đơn hàng được cập nhật thành công.";
 
             return RedirectToAction(nameof(Details), new { orderId = orderHeaderFromDb.Id });
-        }
+    }
+
+
 
         [HttpPost]
         [Authorize(Roles = SD.Role_Admin + "," + SD.Role_Employee)]
@@ -129,7 +139,6 @@ namespace WebShop.Areas.Admin.Controllers
             return RedirectToAction(nameof(Details), new { orderId = OrderVM.OrderHeader.Id });
 
         }
-
         [ActionName("Details")]
         [HttpPost]
         public IActionResult Details_PAY_NOW()
@@ -156,7 +165,7 @@ namespace WebShop.Areas.Admin.Controllers
                     PriceData = new SessionLineItemPriceDataOptions
                     {
                         UnitAmount = (long)(item.Price * 100), // $20.50 => 2050
-                        Currency = "usd",
+                        Currency = "vnd",
                         ProductData = new SessionLineItemPriceDataProductDataOptions
                         {
                             Name = item.Product.Title
@@ -202,11 +211,12 @@ namespace WebShop.Areas.Admin.Controllers
         }
 
 
+
         //Da xu ly data
         #region API CALLS
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(string status)
         {
             IEnumerable<OrderHeader> objOrderHeaders;
 
@@ -225,6 +235,24 @@ namespace WebShop.Areas.Admin.Controllers
                     .GetAll(u => u.ApplicationUserId == userId, includeProperties: "ApplicationUser");
             }
 
+            switch (status)
+            {
+                case "Đang chờ xử lý":
+                    objOrderHeaders = objOrderHeaders.Where(u => u.PaymentStatus == SD.PaymentStatusDelayedPayment);
+                    break;
+                case "Đã xác nhận - đóng gói sản phẩm":
+                    objOrderHeaders = objOrderHeaders.Where(u => u.OrderStatus == SD.StatusInProcess);
+                    break;
+                case "Đã giao hàng":
+                    objOrderHeaders = objOrderHeaders.Where(u => u.OrderStatus == SD.StatusShipped);
+                    break;
+                case "Đang xử lý - gọi xác nhận":
+                    objOrderHeaders = objOrderHeaders.Where(u => u.OrderStatus == SD.StatusApproved);
+                    break;
+                default:
+                    break;
+
+            }
 
             return Json(new { data = objOrderHeaders });
         }

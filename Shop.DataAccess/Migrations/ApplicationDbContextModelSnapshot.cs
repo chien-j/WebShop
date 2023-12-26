@@ -412,31 +412,6 @@ namespace Shop.DataAccess.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("Shop.Models.Models.ProductSize", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Size")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductSizes");
-                });
-
             modelBuilder.Entity("Shop.Models.Models.ShoppingCart", b =>
                 {
                     b.Property<int>("Id")
@@ -489,43 +464,67 @@ namespace Shop.DataAccess.Migrations
                         {
                             Id = 1,
                             DisplayOrder = 1,
-                            Name = "Bánh Kem"
+                            Name = "Bánh Sự Kiện"
                         },
                         new
                         {
                             Id = 2,
                             DisplayOrder = 2,
-                            Name = "Bánh sinh nhật"
+                            Name = "Bánh kem tươi hoa quả"
                         },
                         new
                         {
                             Id = 3,
-                            DisplayOrder = 4,
-                            Name = "Bánh COOKIES"
+                            DisplayOrder = 3,
+                            Name = "Bánh sinh nhật bé trai,bé gái"
                         },
                         new
                         {
                             Id = 4,
-                            DisplayOrder = 5,
-                            Name = "Bánh BISCOTTI"
+                            DisplayOrder = 4,
+                            Name = "Bánh sinh nhật kem bơ"
                         },
                         new
                         {
                             Id = 5,
-                            DisplayOrder = 6,
-                            Name = "Bánh ECLAIR"
+                            DisplayOrder = 5,
+                            Name = "Bánh sinh nhật nam, nữ"
                         },
                         new
                         {
                             Id = 6,
-                            DisplayOrder = 7,
-                            Name = "Set quà tết"
+                            DisplayOrder = 6,
+                            Name = "Bánh Tiramisu"
                         },
                         new
                         {
                             Id = 7,
+                            DisplayOrder = 7,
+                            Name = "Bánh kem số & chữ"
+                        },
+                        new
+                        {
+                            Id = 8,
                             DisplayOrder = 8,
-                            Name = "Bánh Hoa Decor"
+                            Name = "Bánh bông lan trứng muối"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DisplayOrder = 9,
+                            Name = "Bánh tạo hình fondant"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DisplayOrder = 10,
+                            Name = "Bánh Mousse  "
+                        },
+                        new
+                        {
+                            Id = 11,
+                            DisplayOrder = 11,
+                            Name = "Bánh sinh nhật  "
                         });
                 });
 
@@ -566,10 +565,190 @@ namespace Shop.DataAccess.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            Description = "Bánh sinh nhật cổ điển là một trong những loại bánh ngọt vô cùng quen thuộc đối với người dân Việt Nam. ",
+                            Description = "Bánh sự kiện là 1 loại bánh để trang trí  ",
                             Price = 90000.0,
                             Size = "S",
-                            Title = "Bánh sinh nhật cổ điển"
+                            Title = "Bánh sự kiện - Trang trí hoa quả"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            Description = "Bánh kem tươi hoa quả là sự kết hợp giữa kem whipping và hoa quả tươi tạo nên 1 sự kết hợp rất hài hòa. Bánh kem tươi qua quả phù hợp cho người lớn  ",
+                            Price = 35600.0,
+                            Size = "S",
+                            Title = "Bánh kem tươi hoa quả - Trang trí dâu tây"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            Description = "Bánh kem tươi hoa quả là sự kết hợp giữa kem whipping và hoa quả tươi tạo nên 1 sự kết hợp rất hài hòa. Bánh kem tươi qua quả phù hợp cho người lớn  ",
+                            Price = 39500.0,
+                            Size = "S",
+                            Title = "Bánh kem tươi hoa quả - Full hoa quả"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 2,
+                            Description = "Bánh kem tươi hoa quả là sự kết hợp giữa kem whipping và hoa quả tươi tạo nên 1 sự kết hợp rất hài hòa. Bánh kem tươi qua quả phù hợp cho người lớn  ",
+                            Price = 42500.0,
+                            Size = "M",
+                            Title = "Bánh kem tươi hoa quả - Full hoa quả"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 3,
+                            Description = "Bánh sinh nhật bé trai được tạo hình phù hợp cho các bé trai. ",
+                            Price = 36500.0,
+                            Size = "S",
+                            Title = "Bánh sinh nhật bé trai"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 3,
+                            Description = "Bánh sinh nhật bé trai được tạo hình phù hợp cho các bé trai",
+                            Price = 39500.0,
+                            Size = "M",
+                            Title = "Bánh sinh nhật bé trai"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 3,
+                            Description = "Bánh sinh nhật bé gái được tạo hình phù hợp cho các bé gái.",
+                            Price = 36500.0,
+                            Size = "S",
+                            Title = "Bánh sinh nhật bé gái"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 3,
+                            Description = "Bánh sinh nhật bé gái được tạo hình phù hợp cho các bé gái.",
+                            Price = 39500.0,
+                            Size = "M",
+                            Title = "Bánh sinh nhật bé gái - Trang trí gấu dâu"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 4,
+                            Description = "Bánh sinh nhật kem bơ. Đây là 1 dòng kem bơ ăn ngậy hơi béo, với dòng kem bơ chúng ta có thể để được ở ngoài lâu. Dòng kem này khá kén người ăn ",
+                            Price = 395000.0,
+                            Size = "S",
+                            Title = "Bánh sinh nhật kem bơ"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 4,
+                            Description = "Bánh sinh nhật kem bơ. Đây là 1 dòng kem bơ ăn ngậy hơi béo, với dòng kem bơ chúng ta có thể để được ở ngoài lâu. Dòng kem này khá kén người ăn ",
+                            Price = 425000.0,
+                            Size = "M",
+                            Title = "Bánh sinh nhật kem bơ - Tạo hình con mèo"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryId = 5,
+                            Description = "Bánh sinh nhật bé gái được tạo hình phù hợp cho các bạn nam ",
+                            Price = 365000.0,
+                            Size = "S",
+                            Title = "Bánh sinh nhật nam - Bánh vẽ hình chibi"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 5,
+                            Description = "Bánh sinh nhật bé gái được tạo hình phù hợp cho các bạn nam ",
+                            Price = 425000.0,
+                            Size = "M",
+                            Title = "Bánh sinh nhật nam - Bánh trang trí hình nộm"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoryId = 6,
+                            Description = "Bánh Tiramisu là 1 loại bánh có nguồn gốc từ ý, chiếc bánh này được làm thành 1 ổ bánh to và trang trí hấp dẫn thành tâm điểm của 1 bữa tiệc sinh nhật. Nhưng phần cốt bánh mềm xốp được thấm đẫm với hương cà phê và rượu rum, cùng với phần kem được phết ở giữa béo ngậy",
+                            Price = 365000.0,
+                            Size = "S",
+                            Title = "Bánh Tiramisu - Mix vị"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CategoryId = 6,
+                            Description = "Bánh Tiramisu là 1 loại bánh có nguồn gốc từ ý, chiếc bánh này được làm thành 1 ổ bánh to và trang trí hấp dẫn thành tâm điểm của 1 bữa tiệc sinh nhật. Nhưng phần cốt bánh mềm xốp được thấm đẫm với hương cà phê và rượu rum, cùng với phần kem được phết ở giữa béo ngậy",
+                            Price = 365000.0,
+                            Size = "S",
+                            Title = "Bánh Tiramisu - Vị cacao, Trang trí hoa quả"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CategoryId = 7,
+                            Description = "Bánh kem số & chữ là bánh được cắt thành hình chữ hoặc số theo yêu cầu của khách hàng. Bánh được làm bằng kem whippng và có mứt và hoa quả làm nhân ở giữa",
+                            Price = 395000.0,
+                            Size = "S",
+                            Title = "Bánh kem số & chữ - Tạo hình số 7"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CategoryId = 7,
+                            Description = "Bánh kem số & chữ là bánh được cắt thành hình chữ hoặc số theo yêu cầu của khách hàng. Bánh được làm bằng kem whippng và có mứt và hoa quả làm nhân ở giữa",
+                            Price = 495000.0,
+                            Size = "M",
+                            Title = "Bánh kem số & chữ - Cắt hình chữ A "
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CategoryId = 8,
+                            Description = "Bánh bông lan trứng muối là sự hòa quyện giữa vị mặn của trứng với vị ngọt dịu của vỏ bánh bông lan",
+                            Price = 295000.0,
+                            Size = "S",
+                            Title = "Bánh bông lan trứng muối "
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CategoryId = 9,
+                            Description = "Bánh tạo hình fondant được làm từ chất liệu fondant nặn thành những hình thù đáng yêu ngộ nghĩng",
+                            Price = 395000.0,
+                            Size = "S",
+                            Title = "Bánh tạo hình fondant - Bánh tạo hình cốc bia "
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CategoryId = 9,
+                            Description = "Bánh tạo hình fondant được làm từ chất liệu fondant nặn thành những hình thù đáng yêu ngộ nghĩng",
+                            Price = 495000.0,
+                            Size = "M",
+                            Title = "Bánh tạo hình fondant - Bánh trang trí tạo hình con thỏ "
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CategoryId = 10,
+                            Description = "Bánh Mousse là 1 loại bánh lạnh trở nên thịnh hành trong những năm trở lại đây, chiếc bánh mousse có ưu điểm dễ làm, nhanh gọn và không cần sử dụng đến lò nướng. Đây được xem là lựa chọn hàng đầu cho những người mới làm bánh hay chưa thạo làm bánh sinh nhật. Bánh Mousse là họ hàng của dòng bánh lạnh nên vị man mát, béo ngậy của kem tươi hòa cùng với những hương bị đã tạo nen sự độc đáo",
+                            Price = 495000.0,
+                            Size = "M",
+                            Title = "Bánh Mousse - Vị sữa chua trang trí nho sữa "
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CategoryId = 10,
+                            Description = "Bánh Mousse là 1 loại bánh lạnh trở nên thịnh hành trong những năm trở lại đây, chiếc bánh mousse có ưu điểm dễ làm, nhanh gọn và không cần sử dụng đến lò nướng. Đây được xem là lựa chọn hàng đầu cho những người mới làm bánh hay chưa thạo làm bánh sinh nhật. Bánh Mousse là họ hàng của dòng bánh lạnh nên vị man mát, béo ngậy của kem tươi hòa cùng với những hương bị đã tạo nen sự độc đáo",
+                            Price = 535000.0,
+                            Size = "L",
+                            Title = "Bánh Mousse - Vị xoài trang trí bằng các miếng xoài "
                         });
                 });
 
@@ -588,9 +767,6 @@ namespace Shop.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostalCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StreetAddress")
@@ -693,17 +869,6 @@ namespace Shop.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Shop.Models.Models.ProductSize", b =>
-                {
-                    b.HasOne("WebShop.Models.Product", "Product")
-                        .WithMany("ProductSizes")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Shop.Models.Models.ShoppingCart", b =>
                 {
                     b.HasOne("Shop.Models.ApplicationUser", "ApplicationUser")
@@ -746,8 +911,6 @@ namespace Shop.DataAccess.Migrations
             modelBuilder.Entity("WebShop.Models.Product", b =>
                 {
                     b.Navigation("ProductImages");
-
-                    b.Navigation("ProductSizes");
                 });
 #pragma warning restore 612, 618
         }

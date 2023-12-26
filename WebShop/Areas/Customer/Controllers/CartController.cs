@@ -148,7 +148,7 @@ namespace WebShop.Areas.Customer.Controllers
                     { 
                         PriceData = new SessionLineItemPriceDataOptions
                         {
-                            UnitAmount = (long)(item.Price * 100),
+                            UnitAmount = (long)(item.Price * 1),
                             Currency = "usd",
                             ProductData = new SessionLineItemPriceDataProductDataOptions
                             {

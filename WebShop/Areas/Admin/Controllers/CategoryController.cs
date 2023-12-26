@@ -54,8 +54,7 @@ namespace WebShop.Areas.Admin.Controllers
                 return NotFound();
             }
             Category? CategoryFromDb = _unitofwork.Category.Get(u => u.Id == id);
-            //Category? CategoryFromDb1 = _db.Categories.FirstOrDefault(u => u.Id == id);
-            //Category? CategoryFromDb2 = _db.Categories.Where(u => u.Id == id).FirstOrDefault();
+           
 
 
             if (CategoryFromDb == null)

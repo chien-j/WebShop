@@ -27,21 +27,31 @@ namespace WebShop.Areas.Admin.Controllers
         }
         public IActionResult Index(string searchString, string category)
         {
-            List<Product> objProductList = _unitOfwork.Product.GetAll(includeProperties:"Category").ToList();
+            // Lấy danh sách các danh mục
+            ViewBag.Categories = _unitOfwork.Category.GetAll().ToList();
 
-            //Demo sreach
-            var productSR = from m in _unitOfwork.Product.GetAll() select m;
+            // Lấy tất cả sản phẩm với thông tin danh mục
+            List<Product> objProductList = _unitOfwork.Product.GetAll(includeProperties: "Category").ToList();
+
+            // Tìm kiếm theo tiêu đề nếu có chuỗi tìm kiếm
             if (!String.IsNullOrEmpty(searchString))
             {
-                productSR = productSR.Where(s => s.Title.ToLower().Contains(searchString.ToLower()));
+                objProductList = objProductList
+                    .Where(s => s.Title.ToLower().Contains(searchString.ToLower()))
+                    .ToList();
             }
-            objProductList = productSR.ToList();
-            //Demo sreach category
 
-
+            // Tìm kiếm theo danh mục nếu có danh mục được chọn
+            if (!String.IsNullOrEmpty(category))
+            {
+                objProductList = objProductList
+                    .Where(p => p.Category.Name.ToLower() == category.ToLower())
+                    .ToList();
+            }
 
             return View(objProductList);
         }
+
 
         public IActionResult Upsert(int? id)
         { 

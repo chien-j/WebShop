@@ -55,8 +55,7 @@ namespace Shop.DataAccess.Dblnitializer
                     Name = "Piupiu",
                     PhoneNumber = "0988888888",
                     StreetAddress = "HVNN",
-                    State = "IL",
-                    PostalCode = "8888",
+                    PostalCode = "",
                     City = "Ha noi"
                 }, "Admin123*").GetAwaiter().GetResult();
 
@@ -65,7 +64,7 @@ namespace Shop.DataAccess.Dblnitializer
                 _userManager.AddToRoleAsync(user, SD.Role_Admin).GetAwaiter().GetResult();
 
             }
-            // nếu vai trò không được tạo thì chúng tôi cũng sẽ tạo người dùng quản trị
+            
 
             return;
         }

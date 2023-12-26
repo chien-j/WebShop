@@ -81,7 +81,7 @@ namespace WebShop.Areas.Identity.Pages.Account.Manage
             {
                 if (!await _userManager.CheckPasswordAsync(user, Input.Password))
                 {
-                    ModelState.AddModelError(string.Empty, "Incorrect password.");
+                    ModelState.AddModelError(string.Empty, "Mật khẩu không đúng.");
                     return Page();
                 }
             }
@@ -90,7 +90,7 @@ namespace WebShop.Areas.Identity.Pages.Account.Manage
             var userId = await _userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
             {
-                throw new InvalidOperationException($"Unexpected error occurred deleting user.");
+                throw new InvalidOperationException($"Đã xảy ra lỗi không mong muốn khi xóa người dùng.");
             }
 
             await _signInManager.SignOutAsync();

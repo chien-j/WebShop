@@ -18,7 +18,6 @@ namespace Shop.DataAccess.Repository.IRepository
         IOrderDetailRepository OrderDetail { get; }
         IOrderHeaderRepository OrderHeader { get; }
         IProductImageRepository ProductImage { get; }
-        IProductSizeRepository ProductSize { get; }
         INewsRepository News { get; }
 
         

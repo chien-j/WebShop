@@ -41,6 +41,10 @@ namespace WebShop.Areas.Customer.Controllers
         {
             return View();
         }
+        public IActionResult Thanks()
+        {
+            return View();
+        }
         [HttpPost]
         public IActionResult Create(News obj)
         {
@@ -50,7 +54,7 @@ namespace WebShop.Areas.Customer.Controllers
                 _unitofwork.News.Add(obj);
                 _unitofwork.Save();
                 TempData["success"] = " Gửi yêu cầu thành công";
-                return RedirectToAction("Index");
+                return RedirectToAction("Thanks");
             }
             return View();
         }
@@ -124,6 +128,12 @@ namespace WebShop.Areas.Customer.Controllers
             return RedirectToAction("Index");
         }
 
+
+        //Trang chủ
+        public IActionResult Home_one()
+        {
+            return View();
+        }
 
         //Gioithieu
         public IActionResult Gioi_thieu()

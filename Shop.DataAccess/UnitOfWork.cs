@@ -23,7 +23,6 @@ namespace Shop.DataAccess.Repository
         public IOrderHeaderRepository OrderHeader { get; private set; }
         public IOrderDetailRepository OrderDetail { get; private set; }
         public IProductImageRepository ProductImage { get; private set; }
-        public IProductSizeRepository ProductSize { get; private set; }
         public INewsRepository News { get; private set; }
 
         
@@ -40,7 +39,6 @@ namespace Shop.DataAccess.Repository
             OrderDetail = new OrderDetailRepository(_db);
             OrderHeader = new OrderHeaderRepository(_db);
             ProductImage = new ProductImageRepository(_db);
-            ProductSize = new ProductSizeRepository(_db);
             News = new NewsRepository(_db);
             
         }

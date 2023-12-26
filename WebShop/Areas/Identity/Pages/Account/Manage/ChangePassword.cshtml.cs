@@ -62,7 +62,7 @@ namespace WebShop.Areas.Identity.Pages.Account.Manage
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "Mật khẩu {0} phải dài ít nhất là {2} và tối đa {1} ký tựg.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Mật khẩu {0} phải dài ít nhất là {2} và tối đa {1} ký tự.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Mật khẩu mới")]
             public string NewPassword { get; set; }

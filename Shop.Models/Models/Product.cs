@@ -39,8 +39,6 @@ namespace WebShop.Models
         [ValidateNever]
         public List<ProductImage> ProductImages { get; set; }
 
-        [ValidateNever]
-        public List<ProductSize> ProductSizes { get; set; }
 
     }
 }

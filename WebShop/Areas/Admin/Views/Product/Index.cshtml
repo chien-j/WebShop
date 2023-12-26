@@ -18,15 +18,29 @@
 <table id="tblData" class=" table table-bordered table-striped">
  <thead>
          <tr>
-            <form asp-controller="Product" asp-action="Index">
-                <p>
-                    Tìm kiếm theo tiêu đề: <input type="text" name="SearchString" />
-                    <input type="submit" value="Tìm kiếm" />
-                </p>
+            <form method="get">
+                <div>
+                    Tìm kiếm theo tiêu đề:<input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
+                </div>
+                <div>
+                    <label for="category">Danh mục:</label>
+                    <select name="category">
+                        <option value="">-- Tất cả các danh mục --</option>
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.Name">@category.Name</option>
+                        }
+                    </select>
+                </div>
+                <div>
+                    <button type="submit">Tìm kiếm</button>
+                </div>
             </form>
+            
          </tr>
          
         <tr >
+            <th>Id</th>
             <th>Tên Bánh</th>
             <th>Size - Trọng Lượng</th>
             <th>Giá</th>
@@ -39,6 +53,7 @@
         @foreach (var obj in Model)
         {
             <tr>
+                <td>@obj.Id</td>
                 <td>@obj.Title</td>
                 <td>@obj.Size</td>
                 <td>@obj.Price</td>

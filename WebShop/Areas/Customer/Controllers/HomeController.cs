@@ -25,36 +25,6 @@ namespace WebShop.Areas.Customer.Controllers
 
         }
 
-        //public IActionResult Index()
-        //{
-
-        //    IEnumerable<Product> productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
-        //    return View(productList);
-        //}
-
-
-        //public IActionResult Index(string searchTerm)
-        //{
-        //    IEnumerable<Product> productList;
-
-        //    if (!string.IsNullOrEmpty(searchTerm))
-        //    {
-        //        // Tìm kiếm sản phẩm dựa trên điều kiện
-        //        productList = _unitofwork.Product.GetAll(
-        //            filter: p => p.Title.Contains(searchTerm),
-        //            includeProperties: "Category,ProductImages"
-        //        );
-        //    }
-        //    else
-        //    {
-        //        // Lấy tất cả sản phẩm nếu không có điều kiện tìm kiếm
-        //        productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
-        //    }
-
-        //    var groupedProducts = productList.GroupBy(p => p.Category).ToList();
-
-        //    return View(groupedProducts);
-        //}
 
 
         public IActionResult Index(string searchTerm, int? categoryId)
@@ -63,16 +33,12 @@ namespace WebShop.Areas.Customer.Controllers
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                // Search with a specific category if selected
-                productList = _unitofwork.Product.GetAll(
-                    filter: p => p.Title.Contains(searchTerm) &&
-                                 (!categoryId.HasValue || p.CategoryId == categoryId.Value),
-                    includeProperties: "Category,ProductImages"
-                );
+
+                productList = _unitofwork.Product.GetAll(filter: p => (p.Title.ToLower().Contains(searchTerm.ToLower()) ||p.Description.ToLower().Contains(searchTerm.ToLower())) &&(!categoryId.HasValue || p.CategoryId == categoryId.Value),includeProperties: "Category,ProductImages"  );
             }
             else if (categoryId.HasValue)
             {
-                // Display products from a specific category
+                
                 productList = _unitofwork.Product.GetAll(
                     filter: p => p.CategoryId == categoryId.Value,
                     includeProperties: "Category,ProductImages"
@@ -80,7 +46,7 @@ namespace WebShop.Areas.Customer.Controllers
             }
             else
             {
-                // Display all products if neither search term nor category is specified
+                
                 productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
             }
 
@@ -88,7 +54,6 @@ namespace WebShop.Areas.Customer.Controllers
 
             return View(groupedProducts);
         }
-
 
         public IActionResult Details(int productId)
         {
@@ -125,9 +90,9 @@ namespace WebShop.Areas.Customer.Controllers
                 HttpContext.Session.SetInt32(SD.SessionCart, _unitofwork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId).Count());
             }
 
-            TempData["success"] = "Giỏ hàng được thêm thành công";
+            TempData["success"] = "Đã thêm vào giỏ hàng!";
 
-            return  RedirectToAction(nameof(Index));
+            return  RedirectToAction(nameof(Home_new));
         }
 
 
@@ -141,5 +106,30 @@ namespace WebShop.Areas.Customer.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Home_new(int? categoryId)
+        {
+            IEnumerable<Product> productList;
+
+            if (categoryId.HasValue)
+            {
+                // Display products from a specific category
+                productList = _unitofwork.Product.GetAll(
+                    filter: p => p.CategoryId == categoryId.Value,
+                    includeProperties: "Category,ProductImages"
+                );
+            }
+            else
+            {
+                // Display all products if no category is specified
+                productList = _unitofwork.Product.GetAll(includeProperties: "Category,ProductImages");
+            }
+
+            var groupedProducts = productList.GroupBy(p => p.Category).ToList();
+
+            return View(groupedProducts);
+        }
+
+
     }
 }
