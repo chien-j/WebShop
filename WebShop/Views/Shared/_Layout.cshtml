@@ -48,29 +48,28 @@
             <div style="padding:15px;" class="container topbar bg-primary d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Cầu Giấy - Hà Nội</a></small>
-                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">PiuPiu@Example.com</a></small>
+                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">Học Viện Nông Nghiệp Việt Nam</a></small>
+                            <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">Vietnameseherbs@Example.com</a></small>
                     </div>
                         <div class="top-info ps-2">
-                            <small class="me-3"><a href="#" class="text-white">Shop bánh kem, hoa tươi và các loại quà tặng sinh nhật</a></small>
+                            <small class="me-3"><a href="#" class="text-white">Thư Viện Cây thuốc Nam </a></small>
                         </div>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
             <div class="container px-0">
                 <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                        <a asp-area="Customer" asp-controller="Home" asp-action="Home_new" class="navbar-brand"><h1 class="text-primary display-6">PiuPiu Cake</h1></a>
+                        <a asp-area="Customer" asp-controller="Home" asp-action="Home_new" class="navbar-brand"><h1 class="text-primary display-6">Vietnamese herbs</h1></a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="fa fa-bars text-primary"></span>
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
                                 <a class="nav-item nav-link" asp-area="Customer" asp-controller="Home" asp-action="Home_new">Trang chủ</a>
-                                <a class="nav-item nav-link" asp-area="Customer" asp-controller="News" asp-action="Create">Đăng ký tư vấn </a>
-                                <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="nav-item nav-link">Sản Phẩm</a>
-                                <a class="nav-item nav-link" asp-area="Customer" asp-controller="News" asp-action="Gioi_thieu">Giới Thiệu </a>
-                                <a class=" nav-link  " asp-area="Admin" asp-controller="Order" asp-action="Index">Đơn Hàng</a>
-                               
+                                <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="nav-item nav-link">Cây Thuốc Nam</a>
+                                <a asp-area="Customer" asp-controller="Home" asp-action="Index_Blog" class="nav-item nav-link">Blog</a>
+                                <a asp-area="Customer" asp-controller="Home" asp-action="Index_Blog" class="nav-item nav-link">Chúng tôi là ai ?</a>
+                                <a asp-area="Customer" asp-controller="Home" asp-action="Index_Blog" class="nav-item nav-link">Blog</a>
                                  @if (User.IsInRole(SD.Role_Admin))
                                 {
                                     <div class="nav-item dropdown">
@@ -84,21 +83,24 @@
                                 @if (User.IsInRole(SD.Role_Admin))
                                 {
                                     <div class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý Sản Phẩm</a>
+                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Quản lý</a>
                                         <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                            <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="dropdown-item">Danh mục</a>
-                                            <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="dropdown-item">Sản phẩm</a>
-                                            <a asp-area="Customer" asp-controller="News" asp-action="Index" class="dropdown-item">Đơn Đăng Ký Tư Vấn</a>
+                                            <a asp-area="Admin" asp-controller="Blog" asp-action="Index" class="dropdown-item">blog</a>
+
+                                            <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="dropdown-item">Cây</a>
+
                                         </div>
                                     </div>
                                 }
                             </div>
                         <div class="d-flex m-3 me-0">
-                            
+                          @*   
                             <a asp-area="Customer" asp-controller="Cart" asp-action="Index" class="position-relative me-4 my-auto">
                                 <i class="fa fa-shopping-bag fa-2x"></i>
         <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">@await Component.InvokeAsync("ShoppingCart")</span>
                             </a>
+                            
+                             *@
                             <a href="#" class="my-auto">
                                @*  <partial name="_LoginPartial" /> *@
                             </a>
@@ -129,7 +131,7 @@
                     <div class="row g-4">
                         <div class="col-lg-3">
                             <a href="#">
-                                <h1 class="text-primary mb-0">Bánh Ngọt</h1>
+                                <h1 class="text-primary mb-0">Cây Thuốc Nam</h1>
                             </a>
                         </div>
 
@@ -138,35 +140,27 @@
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
-                            <h4 class="text-light mb-3">PIU PIU CAKE</h4>
+                            <h4 class="text-light mb-3">Vietnamese herbs</h4>
 
 
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Thông tin cửa hàng</h4>
-                            <a class="btn-link" href="">Chính sách bảo mật</a>
-                            <a class="btn-link" href="">Chính sách giao hàng</a>
-                            <a class="btn-link" href="">Chính sách xử lý khiếu nại</a>
-                            <a class="btn-link" href="">Chính sách đổi trả</a>
-
+                            <h4 class="text-light mb-3">Chúng tôi là ai ?</h4>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
-                            <h4 class="text-light mb-3">Hướng dẫn bảo quản</h4>
-                            <a class="btn-link" href="">Hướng dẫn mua bánh</a>
-                            <a class="btn-link" href="">Hướng dẫn thanh toán</a>
-                            <a class="btn-link" href="">Khách hàng doanh nghiệp</a>
-
+                            <h4 class="text-light mb-3">Hướng dẫn Trồng Cây</h4>
+                            <a class="btn-link" href="">Hướng dẫn chăm sóc</a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
                             <h4 class="text-light mb-3">Liên hệ</h4>
-                            <p>Địa chỉ: Cầu Giấy - Hà Nội</p>
-                            <p>Email: PiuPiu@contact.com</p>
+                            <p>Địa chỉ: Học Viện Nông Nghiệp Việt Nam</p>
+                            <p>Email: Vietnameseherbs@contact.com</p>
                             <p>Phone: +0912878242</p>
                             <p></p>
                             <img src="~/home/img/payment.png" class="img-fluid" alt="">
@@ -192,7 +186,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js" asp-append-version="true"></script>
 
-    <script src="https://cdn.tiny.cloud/1/g28lhnxtlihu4l4a381gw7tz47voznshwbi10lmsvlekrfme/tinymce/6/tinymce.min.js" referrerpolicy="origin">
+    <script src="https://cdn.tiny.cloud/1/bejl7bfxjln572wfptlvjszv9jo83y0ptv9mn0hlc5z7te2x/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script></script>
     @await RenderSectionAsync("Scripts",  required: false)

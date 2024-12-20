@@ -10,11 +10,11 @@ namespace WebShop.Models
 
         [Required]
         [StringLength(50)]
-        [DisplayName(" Tên danh mục")]
+        [DisplayName("Vị thuốc chữa bệnh ")]
         public string ?Name { get; set; }
         [Required]
-        [DisplayName(" Thứ tự hiển thị danh mục")]
+        [DisplayName(" Mô Tả chi tiết")]
 
-        public int DisplayOrder { get; set; }
+        public string  DisplayOrder { get; set; }
     }
 }

@@ -1,0 +1,92 @@
+﻿@model List<IGrouping<Topic_tree, Blog>>
+
+<form method="get" action="@Url.Action("Index")" id="filterForm">
+
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="searchTerm">
+        <button class="btn btn-outline-secondary" type="submit">Tìm kiếm</button>
+    </div>
+
+</form>
+
+
+<div class="input-group">
+
+    <a class="nav-link active " asp-area="Customer" asp-controller="Home" asp-action="Index">Tất cả</a>
+</div>
+@foreach (var group in Model)
+{
+    <section style="background-color: #fff;">
+        <h3>@group.Key.Name</h3>
+        @foreach (var blog in group)
+        {
+            
+                <div class="row mb-3">
+                    <div class="col-md-12 col-xl-10">
+                        <div class="card shadow-0 border rounded-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                        <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                            @if (blog.BlogImages != null && blog.BlogImages.Count() > 0)
+                                            {
+                                                <img src="@blog.BlogImages.FirstOrDefault().ImageUrl" class="w-100" />
+                                            }
+                                            else
+                                            {
+                                                <!-- Ảnh thay thế nhỏ nhất -->
+                                                <img src="https://placehold.co/500x600/png" class="card-img-top rounded" style="max-width: 100px; height: auto;" />
+                                            }
+                                            <a href="#!">
+                                                <div class="hover-overlay">
+                                                    <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6 col-xl-6">
+                                        <h5> @blog.Title </h5>
+                                        
+
+
+                                        <p class="text-truncate mb-4 mb-md-0">
+                                            @Html.Raw(@blog.Summary)
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                        <div class="d-flex flex-column mt-4">
+                                            <p>
+                                                <h5> Tác Giả: @blog.TacGia </h5>
+                                            </p>
+
+                                        </div>
+                                        <div class="d-flex flex-column mt-4">
+                                            <a asp-action="Details_Blog" asp-route-blogId="@blog.Id" class="btn bg-gradient border-0 form-control btn-hover-custom">
+                                                Xem thêm
+                                            </a>
+
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        }
+
+    </section>
+ 
+}
+
+
+
+
+@section Scripts {
+    <script>
+        document.getElementById('topic_treeId').addEventListener('change', function () {
+            document.getElementById('filterForm').submit();
+        });
+    </script>
+}

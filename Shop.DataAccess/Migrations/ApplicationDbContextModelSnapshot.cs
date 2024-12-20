@@ -228,6 +228,28 @@ namespace Shop.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Shop.Models.Models.BlogImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("BlogImages");
+                });
+
             modelBuilder.Entity("Shop.Models.Models.Company", b =>
                 {
                     b.Property<int>("Id")
@@ -260,136 +282,6 @@ namespace Shop.DataAccess.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("Shop.Models.Models.News", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Nummber")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("News");
-                });
-
-            modelBuilder.Entity("Shop.Models.Models.OrderDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderHeaderId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderHeaderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderDetails");
-                });
-
-            modelBuilder.Entity("Shop.Models.Models.OrderHeader", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Carrier")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("OrderStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("OrderTotal")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("PaymentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("PaymentDueDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PaymentIntentId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PaymentStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SessionId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ShippingDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StreetAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("orderHeaders");
-                });
-
             modelBuilder.Entity("Shop.Models.Models.ProductImage", b =>
                 {
                     b.Property<int>("Id")
@@ -412,7 +304,7 @@ namespace Shop.DataAccess.Migrations
                     b.ToTable("ProductImages");
                 });
 
-            modelBuilder.Entity("Shop.Models.Models.ShoppingCart", b =>
+            modelBuilder.Entity("WebShop.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -420,23 +312,40 @@ namespace Shop.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApplicationUserId")
+                    b.Property<string>("Body")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
+                    b.Property<string>("Byline")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<string>("Conclusion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Introduction")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Summary")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TacGia")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Topic_treeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("Topic_treeId");
 
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ShoppingCarts");
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("WebShop.Models.Category", b =>
@@ -447,8 +356,9 @@ namespace Shop.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
+                    b.Property<string>("DisplayOrder")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -463,68 +373,116 @@ namespace Shop.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            DisplayOrder = 1,
-                            Name = "Bánh Sự Kiện"
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Chữa bệnh phụ nữ"
                         },
                         new
                         {
                             Id = 2,
-                            DisplayOrder = 2,
-                            Name = "Bánh kem tươi hoa quả"
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Mụn nhọt mẩn ngứa "
                         },
                         new
                         {
                             Id = 3,
-                            DisplayOrder = 3,
-                            Name = "Bánh sinh nhật bé trai,bé gái"
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Giun sán"
                         },
                         new
                         {
                             Id = 4,
-                            DisplayOrder = 4,
-                            Name = "Bánh sinh nhật kem bơ"
+                            DisplayOrder = "Cây huốc nam",
+                            Name = "Lỵ"
                         },
                         new
                         {
                             Id = 5,
-                            DisplayOrder = 5,
-                            Name = "Bánh sinh nhật nam, nữ"
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Tiểu tiện - thông mật"
                         },
                         new
                         {
                             Id = 6,
-                            DisplayOrder = 6,
-                            Name = "Bánh Tiramisu"
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Cầm máu"
                         },
                         new
                         {
                             Id = 7,
-                            DisplayOrder = 7,
-                            Name = "Bánh kem số & chữ"
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Hạ huyết áp"
                         },
                         new
                         {
                             Id = 8,
-                            DisplayOrder = 8,
-                            Name = "Bánh bông lan trứng muối"
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Có chất độc"
                         },
                         new
                         {
                             Id = 9,
-                            DisplayOrder = 9,
-                            Name = "Bánh tạo hình fondant"
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Đau bụng"
                         },
                         new
                         {
                             Id = 10,
-                            DisplayOrder = 10,
-                            Name = "Bánh Mousse  "
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "nhuận tràng và tẩy"
                         },
                         new
                         {
-                            Id = 11,
-                            DisplayOrder = 11,
-                            Name = "Bánh sinh nhật  "
+                            Id = 12,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Đắp vết thương - rắn rết cắn"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Đau dạ giày"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Tê thấp - Đau nhức"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Mắt, tai, mũi, họng, răng"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Tim"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Cảm sốt"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Ho Hen"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Thuốc ngủ, an thần, trấn kinh"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            DisplayOrder = "Cây Thuốc nam",
+                            Name = "Thuốc bổ - bồi dưỡng"
                         });
                 });
 
@@ -536,21 +494,44 @@ namespace Shop.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AnToan_Tacdungphu")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("CongDung")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<string>("Size")
+                    b.Property<string>("DacDiem")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("MoTaCay")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhanBo_MoiTruong")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhanDungLamThuoc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenCay")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenGoiKhacCay")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenKhoaHoc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ThanhPhan")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -564,192 +545,36 @@ namespace Shop.DataAccess.Migrations
                         new
                         {
                             Id = 1,
+                            AnToan_Tacdungphu = "việc tiêu thụ rau má quá mức có thể gây ảnh hưởng đến hệ tiêu hóa hoặc gan",
                             CategoryId = 1,
-                            Description = "Bánh sự kiện là 1 loại bánh để trang trí  ",
-                            Price = 90000.0,
-                            Size = "S",
-                            Title = "Bánh sự kiện - Trang trí hoa quả"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 2,
-                            Description = "Bánh kem tươi hoa quả là sự kết hợp giữa kem whipping và hoa quả tươi tạo nên 1 sự kết hợp rất hài hòa. Bánh kem tươi qua quả phù hợp cho người lớn  ",
-                            Price = 35600.0,
-                            Size = "S",
-                            Title = "Bánh kem tươi hoa quả - Trang trí dâu tây"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 2,
-                            Description = "Bánh kem tươi hoa quả là sự kết hợp giữa kem whipping và hoa quả tươi tạo nên 1 sự kết hợp rất hài hòa. Bánh kem tươi qua quả phù hợp cho người lớn  ",
-                            Price = 39500.0,
-                            Size = "S",
-                            Title = "Bánh kem tươi hoa quả - Full hoa quả"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 2,
-                            Description = "Bánh kem tươi hoa quả là sự kết hợp giữa kem whipping và hoa quả tươi tạo nên 1 sự kết hợp rất hài hòa. Bánh kem tươi qua quả phù hợp cho người lớn  ",
-                            Price = 42500.0,
-                            Size = "M",
-                            Title = "Bánh kem tươi hoa quả - Full hoa quả"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 3,
-                            Description = "Bánh sinh nhật bé trai được tạo hình phù hợp cho các bé trai. ",
-                            Price = 36500.0,
-                            Size = "S",
-                            Title = "Bánh sinh nhật bé trai"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 3,
-                            Description = "Bánh sinh nhật bé trai được tạo hình phù hợp cho các bé trai",
-                            Price = 39500.0,
-                            Size = "M",
-                            Title = "Bánh sinh nhật bé trai"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CategoryId = 3,
-                            Description = "Bánh sinh nhật bé gái được tạo hình phù hợp cho các bé gái.",
-                            Price = 36500.0,
-                            Size = "S",
-                            Title = "Bánh sinh nhật bé gái"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CategoryId = 3,
-                            Description = "Bánh sinh nhật bé gái được tạo hình phù hợp cho các bé gái.",
-                            Price = 39500.0,
-                            Size = "M",
-                            Title = "Bánh sinh nhật bé gái - Trang trí gấu dâu"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CategoryId = 4,
-                            Description = "Bánh sinh nhật kem bơ. Đây là 1 dòng kem bơ ăn ngậy hơi béo, với dòng kem bơ chúng ta có thể để được ở ngoài lâu. Dòng kem này khá kén người ăn ",
-                            Price = 395000.0,
-                            Size = "S",
-                            Title = "Bánh sinh nhật kem bơ"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CategoryId = 4,
-                            Description = "Bánh sinh nhật kem bơ. Đây là 1 dòng kem bơ ăn ngậy hơi béo, với dòng kem bơ chúng ta có thể để được ở ngoài lâu. Dòng kem này khá kén người ăn ",
-                            Price = 425000.0,
-                            Size = "M",
-                            Title = "Bánh sinh nhật kem bơ - Tạo hình con mèo"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CategoryId = 5,
-                            Description = "Bánh sinh nhật bé gái được tạo hình phù hợp cho các bạn nam ",
-                            Price = 365000.0,
-                            Size = "S",
-                            Title = "Bánh sinh nhật nam - Bánh vẽ hình chibi"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CategoryId = 5,
-                            Description = "Bánh sinh nhật bé gái được tạo hình phù hợp cho các bạn nam ",
-                            Price = 425000.0,
-                            Size = "M",
-                            Title = "Bánh sinh nhật nam - Bánh trang trí hình nộm"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            CategoryId = 6,
-                            Description = "Bánh Tiramisu là 1 loại bánh có nguồn gốc từ ý, chiếc bánh này được làm thành 1 ổ bánh to và trang trí hấp dẫn thành tâm điểm của 1 bữa tiệc sinh nhật. Nhưng phần cốt bánh mềm xốp được thấm đẫm với hương cà phê và rượu rum, cùng với phần kem được phết ở giữa béo ngậy",
-                            Price = 365000.0,
-                            Size = "S",
-                            Title = "Bánh Tiramisu - Mix vị"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            CategoryId = 6,
-                            Description = "Bánh Tiramisu là 1 loại bánh có nguồn gốc từ ý, chiếc bánh này được làm thành 1 ổ bánh to và trang trí hấp dẫn thành tâm điểm của 1 bữa tiệc sinh nhật. Nhưng phần cốt bánh mềm xốp được thấm đẫm với hương cà phê và rượu rum, cùng với phần kem được phết ở giữa béo ngậy",
-                            Price = 365000.0,
-                            Size = "S",
-                            Title = "Bánh Tiramisu - Vị cacao, Trang trí hoa quả"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            CategoryId = 7,
-                            Description = "Bánh kem số & chữ là bánh được cắt thành hình chữ hoặc số theo yêu cầu của khách hàng. Bánh được làm bằng kem whippng và có mứt và hoa quả làm nhân ở giữa",
-                            Price = 395000.0,
-                            Size = "S",
-                            Title = "Bánh kem số & chữ - Tạo hình số 7"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            CategoryId = 7,
-                            Description = "Bánh kem số & chữ là bánh được cắt thành hình chữ hoặc số theo yêu cầu của khách hàng. Bánh được làm bằng kem whippng và có mứt và hoa quả làm nhân ở giữa",
-                            Price = 495000.0,
-                            Size = "M",
-                            Title = "Bánh kem số & chữ - Cắt hình chữ A "
-                        },
-                        new
-                        {
-                            Id = 17,
-                            CategoryId = 8,
-                            Description = "Bánh bông lan trứng muối là sự hòa quyện giữa vị mặn của trứng với vị ngọt dịu của vỏ bánh bông lan",
-                            Price = 295000.0,
-                            Size = "S",
-                            Title = "Bánh bông lan trứng muối "
-                        },
-                        new
-                        {
-                            Id = 18,
-                            CategoryId = 9,
-                            Description = "Bánh tạo hình fondant được làm từ chất liệu fondant nặn thành những hình thù đáng yêu ngộ nghĩng",
-                            Price = 395000.0,
-                            Size = "S",
-                            Title = "Bánh tạo hình fondant - Bánh tạo hình cốc bia "
-                        },
-                        new
-                        {
-                            Id = 19,
-                            CategoryId = 9,
-                            Description = "Bánh tạo hình fondant được làm từ chất liệu fondant nặn thành những hình thù đáng yêu ngộ nghĩng",
-                            Price = 495000.0,
-                            Size = "M",
-                            Title = "Bánh tạo hình fondant - Bánh trang trí tạo hình con thỏ "
-                        },
-                        new
-                        {
-                            Id = 20,
-                            CategoryId = 10,
-                            Description = "Bánh Mousse là 1 loại bánh lạnh trở nên thịnh hành trong những năm trở lại đây, chiếc bánh mousse có ưu điểm dễ làm, nhanh gọn và không cần sử dụng đến lò nướng. Đây được xem là lựa chọn hàng đầu cho những người mới làm bánh hay chưa thạo làm bánh sinh nhật. Bánh Mousse là họ hàng của dòng bánh lạnh nên vị man mát, béo ngậy của kem tươi hòa cùng với những hương bị đã tạo nen sự độc đáo",
-                            Price = 495000.0,
-                            Size = "M",
-                            Title = "Bánh Mousse - Vị sữa chua trang trí nho sữa "
-                        },
-                        new
-                        {
-                            Id = 21,
-                            CategoryId = 10,
-                            Description = "Bánh Mousse là 1 loại bánh lạnh trở nên thịnh hành trong những năm trở lại đây, chiếc bánh mousse có ưu điểm dễ làm, nhanh gọn và không cần sử dụng đến lò nướng. Đây được xem là lựa chọn hàng đầu cho những người mới làm bánh hay chưa thạo làm bánh sinh nhật. Bánh Mousse là họ hàng của dòng bánh lạnh nên vị man mát, béo ngậy của kem tươi hòa cùng với những hương bị đã tạo nen sự độc đáo",
-                            Price = 535000.0,
-                            Size = "L",
-                            Title = "Bánh Mousse - Vị xoài trang trí bằng các miếng xoài "
+                            CongDung = "Dùng làm rau ăn sống, nấu canh hoặc xay làm nước ép giải nhiệt.",
+                            DacDiem = "Demo",
+                            MoTaCay = "một loại thực vật thân thảo thuộc họ Hoa tán (Apiaceae). Đây là một loại rau phổ biến tại nhiều quốc gia, đặc biệt là ở châu Á, nơi nó được sử dụng rộng rãi trong ẩm thực và y học cổ truyền. ",
+                            PhanBo_MoiTruong = " đồng bằng đến miền núi.",
+                            PhanDungLamThuoc = "Lá, ngọn, rễ  ",
+                            TenCay = "Rau Má ",
+                            TenGoiKhacCay = "Rau má ",
+                            TenKhoaHoc = "Centella asiatica",
+                            ThanhPhan = " vitamin A, C, B1, B2 và các khoáng chất như sắt, canxi, magie."
                         });
+                });
+
+            modelBuilder.Entity("WebShop.Models.Topic_tree", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Topic_trees");
                 });
 
             modelBuilder.Entity("Shop.Models.ApplicationUser", b =>
@@ -828,34 +653,15 @@ namespace Shop.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Shop.Models.Models.OrderDetail", b =>
+            modelBuilder.Entity("Shop.Models.Models.BlogImage", b =>
                 {
-                    b.HasOne("Shop.Models.Models.OrderHeader", "OrderHeader")
-                        .WithMany()
-                        .HasForeignKey("OrderHeaderId")
+                    b.HasOne("WebShop.Models.Blog", "Blog")
+                        .WithMany("BlogImages")
+                        .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebShop.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OrderHeader");
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Shop.Models.Models.OrderHeader", b =>
-                {
-                    b.HasOne("Shop.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
+                    b.Navigation("Blog");
                 });
 
             modelBuilder.Entity("Shop.Models.Models.ProductImage", b =>
@@ -869,23 +675,15 @@ namespace Shop.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Shop.Models.Models.ShoppingCart", b =>
+            modelBuilder.Entity("WebShop.Models.Blog", b =>
                 {
-                    b.HasOne("Shop.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("WebShop.Models.Topic_tree", "Topic_tree")
                         .WithMany()
-                        .HasForeignKey("ApplicationUserId")
+                        .HasForeignKey("Topic_treeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebShop.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
-
-                    b.Navigation("Product");
+                    b.Navigation("Topic_tree");
                 });
 
             modelBuilder.Entity("WebShop.Models.Product", b =>
@@ -906,6 +704,11 @@ namespace Shop.DataAccess.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("WebShop.Models.Blog", b =>
+                {
+                    b.Navigation("BlogImages");
                 });
 
             modelBuilder.Entity("WebShop.Models.Product", b =>

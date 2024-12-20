@@ -167,10 +167,7 @@ namespace WebShop.Areas.Identity.Pages.Account
                 user.Name = Input.Name;
                 user.PostalCode = Input.PostalCode;
                 user.PhoneNumber = Input.PhoneNumber;
-                if(Input.Role == SD.Role_Company) 
-                {
-                    user.CompanyId= Input.CompanyId;
-                }
+               
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("Người dùng đã tạo một tài khoản mới bằng mật khẩu.");

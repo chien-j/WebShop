@@ -21,28 +21,71 @@
 
                     <div asp-validation-summary="All"></div>
                     <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.Title" class="p-2"></label>
-                        <input asp-for="@Model.Product.Title" type="text" class="form-control" />
-                        <span asp-validation-for="@Model.Product.Title" class="text-danger"></span>
+                        <label asp-for="@Model.Product.TenCay" class="p-2"></label>
+                        <input asp-for="@Model.Product.TenCay" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.Product.TenCay" class="text-danger"></span>
                     </div>
-                    <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.Description" class="p-2 text-mute"></label>
-                        <textarea asp-for="@Model.Product.Description" type="text" class="form-control"></textarea>
-                    </div>
-                    <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.Size" class="p-2"></label>
-                        <input asp-for="@Model.Product.Size" type="text" class="form-control" />
-                        <span asp-validation-for="@Model.Product.Size" class="text-danger"></span>
+                
+                     <div class="mb-3 row p-1">
+                        <label asp-for="@Model.Product.TenGoiKhacCay" class="p-2"></label>
+                        <input asp-for="@Model.Product.TenGoiKhacCay" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.Product.TenGoiKhacCay" class="text-danger"></span>
                     </div>
 
-                   
-                    
+
                     <div class="mb-3 row p-1">
-                        <label asp-for="@Model.Product.Price" class="p-2"></label>
-                        <input asp-for="@Model.Product.Price" type="text" class="form-control" />
-                        <span asp-validation-for="@Model.Product.Price" class="text-danger"></span>
+                        <label asp-for="@Model.Product.TenKhoaHoc" class="p-2"></label>
+                        <input asp-for="@Model.Product.TenKhoaHoc" type="text" class="form-control" />
+                        <span asp-validation-for="@Model.Product.TenKhoaHoc" class="text-danger"></span>
                     </div>
-                    
+
+
+                    <div class="mb-3 row p-1">
+                        <label asp-for="@Model.Product.MoTaCay" class="p-2"></label>
+                        <textarea asp-for="@Model.Product.MoTaCay" type="text" class="form-control" > </textarea>
+                    </div>
+                    <div class="mb-3 row p-1">
+                        <label asp-for="@Model.Product.DacDiem" class="p-2"></label>
+                        <textarea asp-for="@Model.Product.DacDiem" type="text" class="form-control"> </textarea>
+                    </div>
+
+                     <div class="mb-3 row p-1">
+                        <label asp-for="@Model.Product.PhanBo_MoiTruong" class="p-2"></label>
+                        <textarea asp-for="@Model.Product.PhanBo_MoiTruong" type="text" class="form-control" ></textarea>
+                        <span asp-validation-for="@Model.Product.PhanBo_MoiTruong" class="text-danger"></span>
+                    </div>
+                
+
+                     <div class="mb-3 row p-1">
+                        <label asp-for="@Model.Product.ThanhPhan" class="p-2"></label>
+                        <textarea asp-for="@Model.Product.ThanhPhan" type="text" class="form-control" ></textarea>
+                        <span asp-validation-for="@Model.Product.ThanhPhan" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="mb-3 row p-1">
+                        <label asp-for="@Model.Product.CongDung" class="p-2"></label>
+                        <textarea asp-for="@Model.Product.CongDung" type="text" class="form-control" ></textarea>
+                        <span asp-validation-for="@Model.Product.CongDung" class="text-danger"></span>
+                    </div>
+
+
+                     <div class="mb-3 row p-1">
+                        <label asp-for="@Model.Product.PhanDungLamThuoc" class="p-2"></label>
+                        <textarea asp-for="@Model.Product.PhanDungLamThuoc" type="text" class="form-control" ></textarea>
+                        <span asp-validation-for="@Model.Product.PhanDungLamThuoc" class="text-danger"></span>
+                    </div>
+                
+
+                     <div class="mb-3 row p-1">
+                        <label asp-for="@Model.Product.AnToan_Tacdungphu" class="p-2"></label>
+                        <textarea asp-for="@Model.Product.AnToan_Tacdungphu" type="text" class="form-control" ></textarea>
+                        <span asp-validation-for="@Model.Product.AnToan_Tacdungphu" class="text-danger"></span>
+                    </div>
+                
+                   
+
+
                     <div class="mb-3 row p-1 form-floating">
                         <input type="file" name="files" class="form-control border-0 shadow" multiple />
                         <label asp-for="Product.ProductImages" class="ms-2"></label>
@@ -70,6 +113,8 @@
                         </select>
                         <span asp-validation-for="@Model.Product.CategoryId" class="text-danger"></span>
                     </div>
+
+                   
                     <div class="mb-3 row p-3">
                         <div class="row p-4">
                             <div class="col-6 col-md-3">
@@ -101,14 +146,18 @@
     </div>
 </div>
 @section Scripts{
+    <script>
+        tinymce.init({
+          selector: 'textarea',
+          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
     @{
-        <script>
-            tinymce.init({
-                selector: 'textarea',
-                plugins: '  mentions anchor autolink charmap codesample emoticons  searchreplace table visualblocks wordcount  ',
-                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough |  align lineheight  | '
-            });
-        </script>
+       
+
+        <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+        
         <partial name="_ValidationScriptsPartial" />
     }
 }

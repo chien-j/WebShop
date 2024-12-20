@@ -1,0 +1,70 @@
+﻿@model Blog
+
+<form method="post">
+    @*<input asp-for="Id" />*@
+    <div class="border p-3 mt-4">
+
+        <div class="row pb-2">
+            <h2 class="text-primary"> Xóa Sản Phẩm</h2>
+            <hr />
+
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Title" class="p-2"></label>
+            <input asp-for="Title" type="text" class="form-control" />
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label asp-for="Summary" class="p-2"></label>
+            <input asp-for="Summary" type="text" class="form-control" />
+        </div>
+
+
+        <div class="mb-3 row p-1">
+            <label asp-for="Introduction" class="p-2"></label>
+            <input asp-for="Introduction" type="text" class="form-control" />
+        </div>
+
+
+        <div class="mb-3 row p-1">
+            <label asp-for="Body" class="p-2"></label>
+            <input asp-for="Body" type="text" class="form-control" />
+        </div>
+        
+        <div class="mb-3 row p-1">
+            <label asp-for="Conclusion" class="p-2"></label>
+            <input asp-for="Conclusion" type="text" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="TacGia" class="p-2"></label>
+            <input asp-for="TacGia" type="text" class="form-control" />
+        </div>
+
+
+        <div class="mb-3 row p-1">
+            <label asp-for="Byline" class="p-2"></label>
+            <input asp-for="Byline" type="text" class="form-control" />
+        </div>
+
+
+       
+        <div class="mb-3 row p-1">
+            <div class="row p-4">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-danger form-control">Xóa</button>
+
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Blog" asp-action="Index" class="btn btn-outline-secondary  form-control">Quay trở về</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

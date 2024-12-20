@@ -1,0 +1,56 @@
+﻿@model List<Topic_tree>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                DANH SÁCH CHUYÊN MỤC
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Topic_tree" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Thêm loại bài viết
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class=" table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Loại bài viết
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var obj in Model.OrderBy(u=>u.Name))
+        {
+            <tr>
+                <td>@obj.Id</td>
+                <td>@obj.Name</td>
+
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Topic_tree" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                            <i class="bi bi-pencil-square"></i>  Chỉnh sửa
+                        </a>
+                        <a asp-controller="Topic_tree" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                            <i class="bi bi-trash"></i>Xóa
+
+                        </a>
+                        
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

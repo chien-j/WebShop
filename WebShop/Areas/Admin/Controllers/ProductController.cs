@@ -33,21 +33,21 @@ namespace WebShop.Areas.Admin.Controllers
             // Lấy tất cả sản phẩm với thông tin danh mục
             List<Product> objProductList = _unitOfwork.Product.GetAll(includeProperties: "Category").ToList();
 
-            // Tìm kiếm theo tiêu đề nếu có chuỗi tìm kiếm
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                objProductList = objProductList
-                    .Where(s => s.Title.ToLower().Contains(searchString.ToLower()))
-                    .ToList();
-            }
+            //// Tìm kiếm theo tiêu đề nếu có chuỗi tìm kiếm
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    objProductList = objProductList
+            //        .Where(s => s.Title.ToLower().Contains(searchString.ToLower()))
+            //        .ToList();
+            //}
 
-            // Tìm kiếm theo danh mục nếu có danh mục được chọn
-            if (!String.IsNullOrEmpty(category))
-            {
-                objProductList = objProductList
-                    .Where(p => p.Category.Name.ToLower() == category.ToLower())
-                    .ToList();
-            }
+            //// Tìm kiếm theo danh mục nếu có danh mục được chọn
+            //if (!String.IsNullOrEmpty(category))
+            //{
+            //    objProductList = objProductList
+            //        .Where(p => p.Category.Name.ToLower() == category.ToLower())
+            //        .ToList();
+            //}
 
             return View(objProductList);
         }
@@ -63,6 +63,7 @@ namespace WebShop.Areas.Admin.Controllers
                     Text = u.Name,
                     Value = u.Id.ToString()
                 }),
+               
                 Product = new Product()
             };
            if(id == null || id ==0)
@@ -145,6 +146,8 @@ namespace WebShop.Areas.Admin.Controllers
                     Text = u.Name,
                     Value = u.Id.ToString()
                 });
+
+                   
                 return View(productVM);
             }
         }

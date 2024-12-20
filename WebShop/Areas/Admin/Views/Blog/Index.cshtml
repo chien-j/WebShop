@@ -1,0 +1,80 @@
+﻿@model List<Blog>
+
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Danh sách Cây
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Blog" asp-action="Upsert" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Tạo mới
+            </a>
+            <a asp-controller="Topic_tree" asp-action="Index" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> QL phân loại bài viết
+            </a>
+        </div>
+       
+    </div>
+</div>
+
+<table id="tblData" class=" table table-bordered table-striped">
+ <thead>
+         <tr>
+            <form method="get">
+                <div>
+                    Tìm kiếm theo tiêu đề:<input type="text" name="searchString" value="@ViewBag.CurrentFilter" />
+                    <label for="Topic_tree">Danh mục:</label>
+                    <select name="Topic_trees">
+                        <option value="">-- Tất cả các danh mục --</option>
+                        @foreach (var Topic_trees in ViewBag.Topic_trees)
+                        {
+                            <option value="@Topic_trees.Name">@Topic_trees.Name</option>
+                        }
+                    </select>
+                    <button type="submit">Tìm kiếm</button>
+                </div>
+                
+            </form>
+            
+         </tr>
+         
+        <tr >
+            
+            <th>Tiêu Đề</th>
+            <th>Tóm tắt </th>
+            <th>Tác Giả </th> 
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>@obj.Title</td>
+                <td>@Html.Raw(@obj.Summary)</td>
+                <td>@obj.TacGia</td>
+               
+                <td>@obj.Topic_tree.Name</td>
+
+
+                <td>
+                    <div class=" btn-group" role="group">
+                        <a asp-controller="Blog" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                            <i class="bi bi-pencil-square"></i>  Chỉnh sửa
+                        </a>
+                        <a asp-controller="Blog" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                            <i class="bi bi-trash"></i>Xóa
+
+                        </a>
+                        
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody> 
+
+</table>

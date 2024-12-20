@@ -27,10 +27,15 @@ namespace Shop.DataAccess
             var objFromDb = _db.Products.FirstOrDefault(u => u.Id == obj.Id);
             if (objFromDb != null)
             {
-                objFromDb.Title = obj.Title;
-                objFromDb.Size = obj.Size;
-                objFromDb.Price = obj.Price;
-                objFromDb.Description = obj.Description;
+                objFromDb.TenCay = obj.TenCay;
+                objFromDb.TenGoiKhacCay = obj.TenGoiKhacCay;
+                objFromDb.TenKhoaHoc = obj.TenKhoaHoc;
+                objFromDb.MoTaCay = obj.MoTaCay;
+                objFromDb.PhanBo_MoiTruong = obj.PhanBo_MoiTruong;
+                objFromDb.ThanhPhan = obj.ThanhPhan;
+                objFromDb.CongDung = obj.CongDung;
+                objFromDb.PhanDungLamThuoc = obj.PhanDungLamThuoc;
+                objFromDb.AnToan_Tacdungphu = obj.AnToan_Tacdungphu;
                 objFromDb.CategoryId = obj.CategoryId;
                 objFromDb.ProductImages = obj.ProductImages;
                 //if (obj.ImggeUrl != null)

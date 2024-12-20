@@ -5,22 +5,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebShop.Models;
 
 namespace Shop.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork
     {
+
+
         ICategoryRepository Category { get; }
+        IBlogRepository Blog { get; }
+
+        ITopic_treeRepository Topic_tree { get; }
+        
         IProductRepository Product { get; }
         ICompanyRepository Company { get; }
-        IShoppingCartRepository ShoppingCart { get; }
         IApplicationUserRepository ApplicationUser { get; }
-        IOrderDetailRepository OrderDetail { get; }
-        IOrderHeaderRepository OrderHeader { get; }
-        IProductImageRepository ProductImage { get; }
-        INewsRepository News { get; }
-
         
+
+        IProductImageRepository ProductImage { get; }
+        IBlogImageRepository BlogImage { get; }
+
+
+
 
 
 

@@ -34,7 +34,7 @@ namespace WebShop.Areas.Customer.Controllers
             if (!string.IsNullOrEmpty(searchTerm))
             {
 
-                productList = _unitofwork.Product.GetAll(filter: p => (p.Title.ToLower().Contains(searchTerm.ToLower()) ||p.Description.ToLower().Contains(searchTerm.ToLower())) &&(!categoryId.HasValue || p.CategoryId == categoryId.Value),includeProperties: "Category,ProductImages"  );
+                productList = _unitofwork.Product.GetAll(filter: p => (p.TenCay.ToLower().Contains(searchTerm.ToLower()) ||p.MoTaCay.ToLower().Contains(searchTerm.ToLower())) &&(!categoryId.HasValue || p.CategoryId == categoryId.Value),includeProperties: "Category,ProductImages"  );
             }
             else if (categoryId.HasValue)
             {
@@ -54,46 +54,68 @@ namespace WebShop.Areas.Customer.Controllers
 
             return View(groupedProducts);
         }
-
-        public IActionResult Details(int productId)
+        public IActionResult Index_Blog(string searchTerm, int? topic_treeId)
         {
-            ShoppingCart cart = new()
+            IEnumerable<Blog> blogList;
+
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                Product = _unitofwork.Product.Get(u => u.Id == productId, includeProperties: "Category,ProductImages"),
-                Count = 1,
-                ProductId = productId
-            };
-            return View(cart);
-        }
 
-        [HttpPost]
-        [Authorize]
-        public IActionResult Details(ShoppingCart shoppingCart)
-        {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
-            shoppingCart.ApplicationUserId = userId;
-
-            ShoppingCart cartFromDb = _unitofwork.ShoppingCart.Get(u => u.ApplicationUserId == userId && u.ProductId == shoppingCart.ProductId);
-
-            if(cartFromDb != null)
+                blogList = _unitofwork.Blog.GetAll(filter: p => (p.Title.ToLower().Contains(searchTerm.ToLower()) || p.Body.ToLower().Contains(searchTerm.ToLower())) && (!topic_treeId.HasValue || p.Topic_treeId == topic_treeId.Value), includeProperties: "Topic_tree,BlogImages");
+            }
+            else if (topic_treeId.HasValue)
             {
-                cartFromDb.Count += shoppingCart.Count;
-                _unitofwork.ShoppingCart.Update(cartFromDb);
-                _unitofwork.Save();
 
+                blogList = _unitofwork.Blog.GetAll(
+                    filter: p => p.Topic_treeId == topic_treeId.Value,
+                    includeProperties: "Topic_tree,BlogImages"
+                );
             }
             else
             {
-                _unitofwork.ShoppingCart.Add(shoppingCart);
-                _unitofwork.Save();
-                HttpContext.Session.SetInt32(SD.SessionCart, _unitofwork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId).Count());
+
+                blogList = _unitofwork.Blog.GetAll(includeProperties: "Topic_tree,BlogImages");
             }
 
-            TempData["success"] = "Đã thêm vào giỏ hàng!";
+            var groupedBlogs = blogList.GroupBy(p => p.Topic_tree).ToList();
 
-            return  RedirectToAction(nameof(Home_new));
+            return View(groupedBlogs);
         }
+
+
+        public IActionResult Details(int productId)
+        {
+
+            var product = _unitofwork.Product.Get(
+           u => u.Id == productId,
+           includeProperties: "Category,ProductImages"
+       );
+
+            if (product == null)
+            {
+                return NotFound(); // Trả về 404 nếu không tìm thấy sản phẩm
+            }
+
+            return View(product); // Trả về đối tượng Product trực tiếp
+        }
+
+        public IActionResult Details_Blog(int blogId)
+        {
+
+            var blog = _unitofwork.Blog.Get(
+           u => u.Id == blogId,
+           includeProperties: "Topic_tree,BlogImages"
+       );
+
+            if (blog == null)
+            {
+                return NotFound(); // Trả về 404 nếu không tìm thấy sản phẩm
+            }
+
+            return View(blog); // Trả về đối tượng  trực tiếp
+        }
+
+
 
 
         public IActionResult Privacy()

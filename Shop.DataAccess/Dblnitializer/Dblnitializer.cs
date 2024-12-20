@@ -43,24 +43,22 @@ namespace Shop.DataAccess.Dblnitializer
             if (!_roleManager.RoleExistsAsync(SD.Role_Customer).GetAwaiter().GetResult())
             {
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_Company)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
-                _roleManager.CreateAsync(new IdentityRole(SD.Role_Employee)).GetAwaiter().GetResult();
                 // nếu vai trò không được tạo thì chúng tôi cũng sẽ tạo người dùng quản trị
 
                 _userManager.CreateAsync(new ApplicationUser
                 {
-                    UserName = "admin@piupiu.com",
-                    Email = "admin@piupiu.com",
-                    Name = "Piupiu",
+                    UserName = "admin@email.com",
+                    Email = "admin@email.com",
+                    Name = "Admin",
                     PhoneNumber = "0988888888",
                     StreetAddress = "HVNN",
                     PostalCode = "",
                     City = "Ha noi"
-                }, "Admin123*").GetAwaiter().GetResult();
+                }, "Admin123@").GetAwaiter().GetResult();
 
 
-                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "admin@piupiu.com");
+                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "admin@email.com");
                 _userManager.AddToRoleAsync(user, SD.Role_Admin).GetAwaiter().GetResult();
 
             }
